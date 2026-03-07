@@ -245,6 +245,15 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Debug endpoint to check environment
+app.get('/api/debug', (req, res) => {
+  res.json({
+    discordWebhookConfigured: !!process.env.DISCORD_WEBHOOK_URL,
+    nodeEnv: process.env.NODE_ENV,
+    port: process.env.PORT,
+  });
+});
+
 // Admin Authentication Middleware
 const authenticateAdmin = (req, res, next) => {
   const authHeader = req.headers.authorization;
