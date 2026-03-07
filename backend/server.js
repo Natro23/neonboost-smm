@@ -9,7 +9,6 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const fetch = require('node-fetch');
-const FormData = require('form-data');
 require('dotenv').config();
 
 const app = express();
@@ -169,9 +168,14 @@ app.get('/api/orders/:id', (req, res) => {
 
 // Function to send Discord webhook
 async function sendDiscordWebhook(order) {
-  const { DISCORD_WEBHOOK_URL } = process.env;
-
-  if (!DISCORD_WEBHOOK_URL) return;
+  const webhookUrl = process.env.DISCORD_WEBHOOK_URL || process.env.VITE_DISCORD_WEBHOOK_URL;
+  
+  console.log('Discord Webhook URL configured:', webhookUrl ? 'YES' : 'NO');
+  
+  if (!webhookUrl) {
+    console.error('Discord webhook URL is not set!');
+    return;
+  }
 
   const itemsList = order.items
     .map(item => `• ${item.serviceName}: ${item.quantity.toLocaleString()} ($${item.total.toFixed(2)})`)
@@ -211,18 +215,22 @@ async function sendDiscordWebhook(order) {
     timestamp: new Date().toISOString(),
   };
 
-  const formData = new FormData();
-  formData.append('payload_json', JSON.stringify({ embeds: [embed] }));
-
-  // If there's a payment proof, we'd need to handle file upload differently
-  // This is a simplified version
-
+  // Send JSON payload directly
   try {
-    await fetch(DISCORD_WEBHOOK_URL, {
+    console.log('Sending Discord webhook...');
+    const response = await fetch(webhookUrl, {
       method: 'POST',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ embeds: [embed] }),
     });
-    console.log('Discord webhook sent successfully');
+    
+    if (response.ok) {
+      console.log('Discord webhook sent successfully');
+    } else {
+      console.error('Discord webhook failed:', response.status, response.statusText);
+    }
   } catch (error) {
     console.error('Failed to send Discord webhook:', error.message);
   }
