@@ -115,9 +115,17 @@ app.post('/api/orders', upload.single('paymentProof'), async (req, res) => {
     // Save order
     orders.push(order);
 
+    console.log('=== ORDER RECEIVED ===');
+    console.log('Order ID:', orderId);
+    console.log('Webhook URL set:', !!process.env.DISCORD_WEBHOOK_URL);
+    
     // Send Discord webhook notification
     if (process.env.DISCORD_WEBHOOK_URL) {
+      console.log('Calling sendDiscordWebhook...');
       await sendDiscordWebhook(order);
+      console.log('sendDiscordWebhook completed');
+    } else {
+      console.log('No webhook URL, skipping Discord notification');
     }
 
     res.status(201).json({
@@ -126,6 +134,7 @@ app.post('/api/orders', upload.single('paymentProof'), async (req, res) => {
       message: 'Order placed successfully',
     });
   } catch (error) {
+    console.error('Order error:', error);
     res.status(500).json({
       success: false,
       message: 'Failed to place order',
