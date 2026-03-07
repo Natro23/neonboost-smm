@@ -6,6 +6,8 @@ import { useStore } from '../store/useStore';
 import { bankAccounts } from '../data/services';
 import { toast } from 'react-toastify';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const Cart = () => {
   const navigate = useNavigate();
   const { isDarkMode, cart, removeFromCart, updateQuantity, updateLink, getCartTotal, clearCart, setOrderId } = useStore();
@@ -81,11 +83,19 @@ const Cart = () => {
       formData.append('bank', selectedBank);
       formData.append('paymentProof', paymentProof);
 
-      // For demo purposes, we'll simulate the API call
-      // In production, this would be: await fetch('/api/orders', { method: 'POST', body: formData })
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Submit order to backend API
+      const response = await fetch(`${API_URL}/api/orders`, {
+        method: 'POST',
+        body: formData,
+      });
 
-      // Save order to localStorage (for admin to see)
+      if (!response.ok) {
+        throw new Error('Failed to submit order');
+      }
+
+      const result = await response.json();
+
+      // Also save to localStorage as backup
       const orderData = {
         orderId,
         items: cart.map(item => ({
