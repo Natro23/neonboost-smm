@@ -175,8 +175,8 @@ app.get('/api/orders/:id', (req, res) => {
   }
 });
 
-// Function to send Discord webhook
-async function sendDiscordWebhook(order) {
+// Function to send Discord webhook with retry logic
+async function sendDiscordWebhook(order, retries = 3, delay = 2000) {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL || process.env.VITE_DISCORD_WEBHOOK_URL;
   
   console.log('Discord Webhook URL configured:', webhookUrl ? 'YES' : 'NO');
@@ -224,25 +224,38 @@ async function sendDiscordWebhook(order) {
     timestamp: new Date().toISOString(),
   };
 
-  // Send JSON payload directly
-  try {
-    console.log('Sending Discord webhook...');
-    const response = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ embeds: [embed] }),
-    });
-    
-    if (response.ok) {
-      console.log('Discord webhook sent successfully');
-    } else {
-      console.error('Discord webhook failed:', response.status, response.statusText);
+  // Send JSON payload with retry logic
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      console.log(`Sending Discord webhook... Attempt ${attempt}/${retries}`);
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ embeds: [embed] }),
+      });
+      
+      if (response.ok) {
+        console.log('Discord webhook sent successfully');
+        return;
+      } else if (response.status === 429) {
+        // Rate limited - wait and retry
+        console.log(`Rate limited! Waiting ${delay}ms before retry...`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+        delay *= 2; // Exponential backoff
+      } else {
+        console.error('Discord webhook failed:', response.status, response.statusText);
+        return;
+      }
+    } catch (error) {
+      console.error('Failed to send Discord webhook:', error.message);
+      if (attempt === retries) return;
+      await new Promise(resolve => setTimeout(resolve, delay));
     }
-  } catch (error) {
-    console.error('Failed to send Discord webhook:', error.message);
   }
+  
+  console.log('All webhook retry attempts exhausted');
 }
 
 // Health check
