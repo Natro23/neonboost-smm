@@ -6,15 +6,17 @@ export interface CartItem {
   service: Service;
   quantity: number;
   link: string;
+  accountNotPrivate: boolean;
 }
 
 interface StoreState {
   // Cart
   cart: CartItem[];
-  addToCart: (service: Service, quantity: number, link: string) => void;
+  addToCart: (service: Service, quantity: number, link: string, accountNotPrivate?: boolean) => void;
   removeFromCart: (serviceId: string) => void;
   updateQuantity: (serviceId: string, quantity: number) => void;
   updateLink: (serviceId: string, link: string) => void;
+  updateAccountNotPrivate: (serviceId: string, accountNotPrivate: boolean) => void;
   clearCart: () => void;
   getCartTotal: () => number;
   getCartCount: () => number;
@@ -35,7 +37,7 @@ export const useStore = create<StoreState>()(
       // Cart state
       cart: [],
 
-      addToCart: (service: Service, quantity: number, link: string) => {
+      addToCart: (service: Service, quantity: number, link: string, accountNotPrivate = false) => {
         const { cart } = get();
         const existingItem = cart.find(item => item.service.id === service.id);
 
@@ -43,13 +45,13 @@ export const useStore = create<StoreState>()(
           set({
             cart: cart.map(item =>
               item.service.id === service.id
-                ? { ...item, quantity, link: link || item.link }
+                ? { ...item, quantity, link: link || item.link, accountNotPrivate: accountNotPrivate ?? item.accountNotPrivate }
                 : item
             ),
           });
         } else {
           set({
-            cart: [...cart, { service, quantity, link }],
+            cart: [...cart, { service, quantity, link, accountNotPrivate }],
           });
         }
       },
@@ -75,6 +77,15 @@ export const useStore = create<StoreState>()(
         set({
           cart: cart.map(item =>
             item.service.id === serviceId ? { ...item, link } : item
+          ),
+        });
+      },
+
+      updateAccountNotPrivate: (serviceId: string, accountNotPrivate: boolean) => {
+        const { cart } = get();
+        set({
+          cart: cart.map(item =>
+            item.service.id === serviceId ? { ...item, accountNotPrivate } : item
           ),
         });
       },

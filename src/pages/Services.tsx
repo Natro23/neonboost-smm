@@ -12,6 +12,7 @@ const Services = () => {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [modalQuantity, setModalQuantity] = useState(100);
   const [modalLink, setModalLink] = useState('');
+  const [accountNotPrivate, setAccountNotPrivate] = useState(false);
 
   // Filter services
   const filteredServices = useMemo(() => {
@@ -39,11 +40,19 @@ const Services = () => {
       return;
     }
 
-    addToCart(selectedService, modalQuantity, modalLink);
+    // Check if platform requires checkbox and if it's checked
+    const requiresCheckbox = ['Facebook', 'TikTok', 'Instagram', 'YouTube'].includes(selectedService.platform);
+    if (requiresCheckbox && !accountNotPrivate) {
+      toast.error('Please confirm that your account is not private!');
+      return;
+    }
+
+    addToCart(selectedService, modalQuantity, modalLink, accountNotPrivate);
     toast.success(`${selectedService.name} added to cart!`);
     setSelectedService(null);
     setModalQuantity(100);
     setModalLink('');
+    setAccountNotPrivate(false);
   };
 
   // Open modal with service
@@ -51,6 +60,7 @@ const Services = () => {
     setSelectedService(service);
     setModalQuantity(service.min);
     setModalLink('');
+    setAccountNotPrivate(false);
   };
 
   // Get badge color
@@ -319,7 +329,7 @@ const Services = () => {
               </div>
 
               {/* Link Input */}
-              <div className="mb-6">
+              <div className="mb-4">
                 <label className={`block mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                   Your {selectedService.platform} Link
                 </label>
@@ -331,6 +341,30 @@ const Services = () => {
                   className="input-neon"
                 />
               </div>
+
+              {/* Account Not Private Checkbox */}
+              {['Facebook', 'TikTok', 'Instagram', 'YouTube'].includes(selectedService.platform) && (
+                <div className="mb-6">
+                  <label className={`flex items-start gap-3 p-4 rounded-lg cursor-pointer transition-colors ${
+                    isDarkMode ? 'bg-yellow-500/10 hover:bg-yellow-500/20' : 'bg-yellow-50 hover:bg-yellow-100'
+                  }`}>
+                    <input
+                      type="checkbox"
+                      checked={accountNotPrivate}
+                      onChange={(e) => setAccountNotPrivate(e.target.checked)}
+                      className="mt-1 w-5 h-5 rounded border-gray-500 text-primary focus:ring-primary"
+                    />
+                    <div>
+                      <p className={`font-medium ${isDarkMode ? 'text-yellow-400' : 'text-yellow-700'}`}>
+                        My account is NOT private
+                      </p>
+                      <p className={`text-sm ${isDarkMode ? 'text-yellow-400/70' : 'text-yellow-600'}`}>
+                        Our service cannot work on private accounts. Please make sure your account is public before ordering.
+                      </p>
+                    </div>
+                  </label>
+                </div>
+              )}
 
               {/* Price & Add to Cart */}
               <div className="flex items-center justify-between">

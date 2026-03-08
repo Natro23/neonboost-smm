@@ -10,7 +10,7 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { isDarkMode, cart, removeFromCart, updateQuantity, updateLink, getCartTotal, clearCart, setOrderId } = useStore();
+  const { isDarkMode, cart, removeFromCart, updateQuantity, updateLink, updateAccountNotPrivate, getCartTotal, clearCart, setOrderId } = useStore();
   const [selectedBank, setSelectedBank] = useState<string | null>(null);
   const [paymentProof, setPaymentProof] = useState<File | null>(null);
   const [proofPreview, setProofPreview] = useState<string | null>(null);
@@ -48,6 +48,15 @@ const Cart = () => {
     const missingLinks = cart.filter(item => !item.link.trim());
     if (missingLinks.length > 0) {
       toast.error('Please provide links for all services!');
+      return;
+    }
+
+    // Check if Facebook/TikTok/Instagram/YouTube accounts are not private
+    const privateAccounts = cart.filter(item => 
+      ['Facebook', 'TikTok', 'Instagram', 'YouTube'].includes(item.service.platform) && !item.accountNotPrivate
+    );
+    if (privateAccounts.length > 0) {
+      toast.error('Please confirm that your Facebook/TikTok/Instagram/YouTube accounts are not private!');
       return;
     }
 
@@ -195,6 +204,25 @@ const Cart = () => {
                             className="input-neon text-sm"
                           />
                         </div>
+
+                        {/* Account Not Private Checkbox for Facebook/TikTok/Instagram/YouTube */}
+                        {['Facebook', 'TikTok', 'Instagram', 'YouTube'].includes(item.service.platform) && (
+                          <div className="mb-3">
+                            <label className={`flex items-center gap-2 cursor-pointer text-sm ${
+                              item.accountNotPrivate 
+                                ? (isDarkMode ? 'text-green-400' : 'text-green-600')
+                                : (isDarkMode ? 'text-yellow-400' : 'text-yellow-600')
+                            }`}>
+                              <input
+                                type="checkbox"
+                                checked={item.accountNotPrivate}
+                                onChange={(e) => updateAccountNotPrivate(item.service.id, e.target.checked)}
+                                className="w-4 h-4 rounded"
+                              />
+                              My account is NOT private
+                            </label>
+                          </div>
+                        )}
                       </div>
 
                       {/* Quantity & Price */}
@@ -240,8 +268,8 @@ const Cart = () => {
               </div>
 
               {/* Order Summary */}
-              <div>
-                <div className="card-neon p-6 sticky top-24">
+              <div className="-mt-12">
+                <div className="card-neon p-6 sticky top-12">
                   <h2 className={`text-xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                     Order Summary
                   </h2>
