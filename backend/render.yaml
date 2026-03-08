@@ -14,8 +14,10 @@ services:
         value: admin
       - key: ADMIN_PASSWORD
         value: neonboost2024
-      - key: DISCORD_WEBHOOK_URL
-        value: https://discord.com/api/webhooks/1479995906592870475/xrH8_iONyIOq5cD1TE1YWwFGmjuj90kdGDgZnWMepqAsbHbJqNCw7NbnQiAVAHYP4ldt
+      - key: TELEGRAM_BOT_TOKEN
+        value: 8598410253:AAEHZo0nkfYevliirAkn3ZFPGd3isRkMRT8
+      - key: TELEGRAM_CHAT_ID
+        value: "6409902444"
       - key: BANK_BOG_ACCOUNT
         value: GE15BG0000000900450000
       - key: TBC_BANK_ACCOUNT

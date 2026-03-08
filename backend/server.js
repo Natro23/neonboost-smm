@@ -1,6 +1,6 @@
 /**
  * NeonBoost SMM Panel Backend
- * Node.js + Express + MongoDB + Discord Webhook
+ * Node.js + Express + MongoDB + Telegram Bot
  */
 
 const express = require('express');
@@ -117,15 +117,15 @@ app.post('/api/orders', upload.single('paymentProof'), async (req, res) => {
 
     console.log('=== ORDER RECEIVED ===');
     console.log('Order ID:', orderId);
-    console.log('Webhook URL set:', !!process.env.DISCORD_WEBHOOK_URL);
+    console.log('Telegram Bot configured:', !!process.env.TELEGRAM_BOT_TOKEN);
     
-    // Send Discord webhook notification
-    if (process.env.DISCORD_WEBHOOK_URL) {
-      console.log('Calling sendDiscordWebhook...');
-      await sendDiscordWebhook(order);
-      console.log('sendDiscordWebhook completed');
+    // Send Telegram notification
+    if (process.env.TELEGRAM_BOT_TOKEN) {
+      console.log('Calling sendTelegramMessage...');
+      await sendTelegramMessage(order);
+      console.log('sendTelegramMessage completed');
     } else {
-      console.log('No webhook URL, skipping Discord notification');
+      console.log('No Telegram bot token, skipping notification');
     }
 
     res.status(201).json({
@@ -175,14 +175,16 @@ app.get('/api/orders/:id', (req, res) => {
   }
 });
 
-// Function to send Discord webhook with retry logic
-async function sendDiscordWebhook(order, retries = 10, delay = 5000) {
-  const webhookUrl = process.env.DISCORD_WEBHOOK_URL || process.env.VITE_DISCORD_WEBHOOK_URL;
+// Function to send Telegram message with retry logic
+async function sendTelegramMessage(order, retries = 10, delay = 5000) {
+  const botToken = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
   
-  console.log('Discord Webhook URL configured:', webhookUrl ? 'YES' : 'NO');
+  console.log('Telegram Bot Token configured:', botToken ? 'YES' : 'NO');
+  console.log('Telegram Chat ID configured:', chatId ? 'YES' : 'NO');
   
-  if (!webhookUrl) {
-    console.error('Discord webhook URL is not set!');
+  if (!botToken || !chatId) {
+    console.error('Telegram bot token or chat ID is not set!');
     return;
   }
 
@@ -190,72 +192,53 @@ async function sendDiscordWebhook(order, retries = 10, delay = 5000) {
     .map(item => `• ${item.serviceName}: ${item.quantity.toLocaleString()} ($${item.total.toFixed(2)})`)
     .join('\n');
 
-  const embed = {
-    title: '🎉 New Order Received!',
-    color: 0x00bfff,
-    fields: [
-      {
-        name: '📋 Order ID',
-        value: order.orderId,
-        inline: true,
-      },
-      {
-        name: '💰 Total',
-        value: `$${order.total.toFixed(2)}`,
-        inline: true,
-      },
-      {
-        name: '🏦 Bank',
-        value: order.bank,
-        inline: true,
-      },
-      {
-        name: '📦 Items',
-        value: itemsList || 'No items',
-      },
-      {
-        name: '🕐 Time',
-        value: new Date(order.createdAt).toLocaleString(),
-      },
-    ],
-    footer: {
-      text: 'NeonBoost SMM Panel',
-    },
-    timestamp: new Date().toISOString(),
-  };
+  const message = `🎉 *New Order Received!*\n\n` +
+    `📋 *Order ID:* \`${order.orderId}\`\n` +
+    `💰 *Total:* $${order.total.toFixed(2)}\n` +
+    `🏦 *Bank:* ${order.bank}\n\n` +
+    `📦 *Items:*\n${itemsList || 'No items'}\n\n` +
+    `🕐 *Time:* ${new Date(order.createdAt).toLocaleString()}\n\n` +
+    `_NeonBoost SMM Panel_`;
 
-  // Send JSON payload with retry logic
+  // Send message with retry logic
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
-      console.log(`Sending Discord webhook... Attempt ${attempt}/${retries}`);
-      const response = await fetch(webhookUrl, {
+      console.log(`Sending Telegram message... Attempt ${attempt}/${retries}`);
+      const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ embeds: [embed] }),
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+          parse_mode: 'Markdown',
+        }),
       });
       
-      if (response.ok) {
-        console.log('Discord webhook sent successfully');
+      const data = await response.json();
+      
+      if (data.ok) {
+        console.log('Telegram message sent successfully');
         return;
-      } else if (response.status === 429) {
+      } else if (data.error_code === 429) {
         // Rate limited - wait and retry
-        console.log(`Rate limited! Waiting ${delay}ms before retry...`);
-        await new Promise(resolve => setTimeout(resolve, delay));
-        delay *= 2; // Exponential backoff
+        const retryAfter = data.parameters?.retry_after || 5;
+        console.log(`Rate limited! Waiting ${retryAfter}s before retry...`);
+        await new Promise(resolve => setTimeout(resolve, retryAfter * 1000));
+        delay *= 2;
       } else {
-        console.error('Discord webhook failed:', response.status, response.statusText);
+        console.error('Telegram message failed:', data.description);
         return;
       }
     } catch (error) {
-      console.error('Failed to send Discord webhook:', error.message);
+      console.error('Failed to send Telegram message:', error.message);
       if (attempt === retries) return;
       await new Promise(resolve => setTimeout(resolve, delay));
     }
   }
   
-  console.log('All webhook retry attempts exhausted');
+  console.log('All Telegram retry attempts exhausted');
 }
 
 // Health check
@@ -270,7 +253,8 @@ app.get('/api/health', (req, res) => {
 // Debug endpoint to check environment
 app.get('/api/debug', (req, res) => {
   res.json({
-    discordWebhookConfigured: !!process.env.DISCORD_WEBHOOK_URL,
+    telegramBotConfigured: !!process.env.TELEGRAM_BOT_TOKEN,
+    telegramChatIdConfigured: !!process.env.TELEGRAM_CHAT_ID,
     nodeEnv: process.env.NODE_ENV,
     port: process.env.PORT,
   });
