@@ -18,6 +18,8 @@ services:
         value: 8598410253:AAEHZo0nkfYevliirAkn3ZFPGd3isRkMRT8
       - key: TELEGRAM_CHAT_ID
         value: "6409902444"
+      - key: APP_URL
+        value: https://neonboost-backend.onrender.com
       - key: BANK_BOG_ACCOUNT
         value: GE15BG0000000900450000
       - key: TBC_BANK_ACCOUNT

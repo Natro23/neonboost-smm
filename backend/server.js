@@ -220,6 +220,12 @@ async function sendTelegramMessage(order, retries = 10, delay = 5000) {
       
       if (data.ok) {
         console.log('Telegram message sent successfully');
+        
+        // Send payment proof photo if available
+        if (order.paymentProof) {
+          await sendTelegramPhoto(order, botToken, chatId, retries, delay);
+        }
+        
         return;
       } else if (data.error_code === 429) {
         // Rate limited - wait and retry
@@ -239,6 +245,61 @@ async function sendTelegramMessage(order, retries = 10, delay = 5000) {
   }
   
   console.log('All Telegram retry attempts exhausted');
+}
+
+// Function to send payment proof photo to Telegram
+async function sendTelegramPhoto(order, botToken, chatId, retries = 10, delay = 5000) {
+  if (!order.paymentProof) {
+    console.log('No payment proof to send');
+    return;
+  }
+
+  // Construct the full URL for the image
+  const baseUrl = process.env.APP_URL || 'https://neonboost-backend.onrender.com';
+  const photoUrl = `${baseUrl}${order.paymentProof}`;
+  
+  console.log('Sending payment proof photo:', photoUrl);
+
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      console.log(`Sending Telegram photo... Attempt ${attempt}/${retries}`);
+      
+      // Send photo using Telegram's sendPhoto API with URL
+      const response = await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          photo: photoUrl,
+          caption: `📎 Payment Proof for Order: ${order.orderId}`,
+          parse_mode: 'Markdown',
+        }),
+      });
+      
+      const data = await response.json();
+      
+      if (data.ok) {
+        console.log('Telegram photo sent successfully');
+        return;
+      } else if (data.error_code === 429) {
+        const retryAfter = data.parameters?.retry_after || 5;
+        console.log(`Rate limited! Waiting ${retryAfter}s before retry...`);
+        await new Promise(resolve => setTimeout(resolve, retryAfter * 1000));
+        delay *= 2;
+      } else {
+        console.error('Telegram photo failed:', data.description);
+        return;
+      }
+    } catch (error) {
+      console.error('Failed to send Telegram photo:', error.message);
+      if (attempt === retries) return;
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+  }
+  
+  console.log('All Telegram photo retry attempts exhausted');
 }
 
 // Health check
