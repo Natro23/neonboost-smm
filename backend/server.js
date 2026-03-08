@@ -176,7 +176,7 @@ app.get('/api/orders/:id', (req, res) => {
 });
 
 // Function to send Discord webhook with retry logic
-async function sendDiscordWebhook(order, retries = 3, delay = 2000) {
+async function sendDiscordWebhook(order, retries = 10, delay = 5000) {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL || process.env.VITE_DISCORD_WEBHOOK_URL;
   
   console.log('Discord Webhook URL configured:', webhookUrl ? 'YES' : 'NO');
