@@ -98,13 +98,13 @@ const Header = () => {
                 className="relative p-2 rounded-full bg-primary/20 text-primary hover:bg-primary/30 transition-colors duration-300"
               >
                 <FiShoppingCart size={20} />
-                {cartCount > 0 && (
+                {cart.length > 0 && (
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     className="absolute -top-1 -right-1 w-5 h-5 bg-accent rounded-full flex items-center justify-center text-xs font-bold text-white"
                   >
-                    {cartCount > 99 ? '99+' : cartCount}
+                    {cart.length > 99 ? '99+' : cart.length}
                   </motion.span>
                 )}
               </motion.div>
