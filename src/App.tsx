@@ -6,11 +6,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import RandomNotifications from './components/RandomNotifications';
+import TelegramWidget from './components/TelegramWidget';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import Cart from './pages/Cart';
 import ApiDocs from './pages/ApiDocs';
 import Contact from './pages/Contact';
+import FAQ from './pages/FAQ';
 import AdminPanel from './pages/AdminPanel';
 import { useStore } from './store/useStore';
 
@@ -48,13 +50,15 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/api-docs" element={<ApiDocs />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/admin" element={<AdminPanel />} />
           </Routes>
         </main>
         <Footer />
+        <TelegramWidget />
         <RandomNotifications />
         <ToastContainer
-          position="bottom-right"
+          position="bottom-left"
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop
@@ -66,6 +70,7 @@ function App() {
           theme={isDarkMode ? 'dark' : 'light'}
           style={{ zIndex: 9999 }}
           aria-label="Notification container"
+          limit={3}
         />
       </div>
     </Router>

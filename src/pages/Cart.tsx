@@ -289,13 +289,17 @@ const Cart = () => {
                             className="hidden"
                           />
                           <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
-                            <span className="text-xs font-bold">{bank.name.substring(0, 2)}</span>
+                            {bank.logo ? (
+                              <img src={bank.logo} alt={bank.name} className="w-8 h-8 object-contain" />
+                            ) : (
+                              <span className="text-xs font-bold">{bank.name.substring(0, 2)}</span>
+                            )}
                           </div>
                           <div className="flex-1">
                             <p className={`font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                               {bank.name}
                             </p>
-                            <p className="text-xs text-gray-500">{bank.account}</p>
+                            <p className="text-xs text-gray-500">{bank.isCrypto ? 'Instant crypto payment' : bank.account}</p>
                           </div>
                           {selectedBank === bank.name && (
                             <FiCheck className="text-primary" />

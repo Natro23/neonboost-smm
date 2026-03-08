@@ -559,4 +559,10 @@ export const bankAccounts = [
     account: 'GE15BG0000000900450000',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Bank_of_Georgia_logo.svg/200px-Bank_of_Georgia_logo.svg.png',
   },
+  {
+    name: 'CryptoMus (USDT)',
+    account: 'Pay with USDT TRC20',
+    logo: 'https://cryptomus.com/favicon.ico',
+    isCrypto: true,
+  },
 ];
