@@ -15,7 +15,7 @@ services:
       - key: ADMIN_PASSWORD
         value: neonboost2024
       - key: DISCORD_WEBHOOK_URL
-        value: https://discord.com/api/webhooks/1479919566946828520/g1jggUwcD-hRAwM-1RF1fCC1YrmqkpqXvIJp571SVR4jDdWRdPKEo_8GUOMpo7ekeIVp
+        value: https://discord.com/api/webhooks/1479995906592870475/xrH8_iONyIOq5cD1TE1YWwFGmjuj90kdGDgZnWMepqAsbHbJqNCw7NbnQiAVAHYP4ldt
       - key: BANK_BOG_ACCOUNT
         value: GE15BG0000000900450000
       - key: TBC_BANK_ACCOUNT
