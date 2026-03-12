@@ -169,7 +169,7 @@ const Cart = () => {
         quantity: item.quantity,
         link: item.link,
         price: item.service.price,
-        total: (item.service.price * item.quantity) / 1000,
+        total: item.service.min === 1 && item.service.max === 1 ? item.service.price * item.quantity : (item.service.price * item.quantity) / 1000,
       }))));
       formData.append('total', getCartTotal().toString());
       formData.append('bank', selectedBank);
@@ -196,7 +196,7 @@ const Cart = () => {
           quantity: item.quantity,
           link: item.link,
           price: item.service.price,
-          total: (item.service.price * item.quantity) / 1000,
+          total: item.service.min === 1 && item.service.max === 1 ? item.service.price * item.quantity : (item.service.price * item.quantity) / 1000,
         })),
         total: getCartTotal(),
         bank: selectedBank,
@@ -270,7 +270,7 @@ const Cart = () => {
                           {item.service.name}
                         </h3>
                         <p className="text-sm text-gray-500 mb-2">
-                          {formatPrice(item.service.price)} / 1000
+                        {formatPrice(item.service.price)}{!(item.service.min === 1 && item.service.max === 1) && ' / 1000'}
                         </p>
 
                         {/* Link Input */}
@@ -356,7 +356,7 @@ const Cart = () => {
                         <div className="text-right">
                           <p className="text-sm text-gray-500">{t('cart.subtotal')}</p>
                           <p className="text-xl font-bold gradient-text">
-                            {formatPrice((item.service.price * item.quantity) / 1000)}
+                          {formatPrice(item.service.min === 1 && item.service.max === 1 ? item.service.price * item.quantity : (item.service.price * item.quantity) / 1000)}
                           </p>
                         </div>
                         <button
