@@ -15,9 +15,11 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+
 // MongoDB connection
 let db;
 const mongoClient = new MongoClient(process.env.MONGODB_URI);
+
 
 async function connectDB() {
   try {
