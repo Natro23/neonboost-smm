@@ -70,7 +70,7 @@ export const useStore = create<StoreState>()(
   persist(
     (set, get) => ({
       // Language state
-      language: 'en',
+      language: 'ka',
       setLanguage: (language: Language) => {
         i18n.changeLanguage(language);
         set({ language });
