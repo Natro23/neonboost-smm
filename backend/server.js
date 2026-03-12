@@ -192,13 +192,13 @@ async function sendTelegramMessage(order, retries = 10, delay = 5000) {
     .map(item => `• ${item.serviceName}\n  📊 Qty: ${item.quantity.toLocaleString()} (₾${item.total.toFixed(2)})\n  🔗 Link: ${item.link}`)
     .join('\n\n');
 
-  const message = `🎉 *New Order Received!*\n\n` +
-    `📋 *Order ID:* \`${order.orderId}\`\n` +
-    `💰 *Total:* ₾${order.total.toFixed(2)}\n` +
-    `🏦 *Bank:* ${order.bank}\n\n` +
-    `📦 *Items:*\n${itemsList || 'No items'}\n\n` +
-    `🕐 *Time:* ${new Date(order.createdAt).toLocaleString()}\n\n` +
-    `_NeonBoost Panel_`;
+  const message = `🎉 <b>New Order Received!</b>\n\n` +
+    `📋 <b>Order ID:</b> <code>${order.orderId}</code>\n` +
+    `💰 <b>Total:</b> ₾${order.total.toFixed(2)}\n` +
+    `🏦 <b>Bank:</b> ${order.bank}\n\n` +
+    `📦 <b>Items:</b>\n${itemsList || 'No items'}\n\n` +
+    `🕐 <b>Time:</b> ${new Date(order.createdAt).toLocaleString()}\n\n` +
+    `<i>NeonBoost Panel</i>`;
 
   // Send message with retry logic
   for (let attempt = 1; attempt <= retries; attempt++) {
@@ -212,7 +212,7 @@ async function sendTelegramMessage(order, retries = 10, delay = 5000) {
         body: JSON.stringify({
           chat_id: chatId,
           text: message,
-          parse_mode: 'Markdown',
+          parse_mode: 'HTML',
         }),
       });
       
@@ -274,7 +274,7 @@ async function sendTelegramPhoto(order, botToken, chatId, retries = 10, delay = 
           chat_id: chatId,
           photo: photoUrl,
           caption: `📎 Payment Proof for Order: ${order.orderId}`,
-          parse_mode: 'Markdown',
+          parse_mode: 'HTML',
         }),
       });
       
@@ -329,7 +329,7 @@ app.post('/api/contact', async (req, res) => {
         `👤 *Name:* ${name}\n` +
         `📧 *Email:* ${email}\n` +
         `📝 *Subject:* ${subject || 'No subject'}\n\n` +
-        `💬 *Message:*\n${message}\n\n` +
+        `💬 <b>Message:</b>\n${message}\n\n` +
         `_NeonBoost Panel_`;
 
       try {
@@ -341,7 +341,7 @@ app.post('/api/contact', async (req, res) => {
           body: JSON.stringify({
             chat_id: chatId,
             text: contactMessage,
-            parse_mode: 'Markdown',
+            parse_mode: 'HTML',
           }),
         });
 
