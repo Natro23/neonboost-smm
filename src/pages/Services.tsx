@@ -301,7 +301,7 @@ const Services = () => {
                             {formatPrice(service.originalPrice)}
                           </span>
                         )}
-                        <span className="text-xs text-gray-500">/ 1000</span>
+                        {!(service.min === 1 && service.max === 1) && <span className="text-xs text-gray-500">/ 1000</span>}
                       </div>
                       {service.originalPrice && service.badge !== 'super-sale' && (
                         <div className="mt-1 inline-flex items-center gap-1 px-2 py-0.5 bg-red-500/20 text-red-400 text-xs font-semibold rounded-md">
@@ -538,7 +538,11 @@ const Services = () => {
               <div>
                 <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Total</p>
                 <p className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                  {formatPrice((selectedService.price * modalQuantity) / 1000)}
+                {formatPrice(
+  selectedService.min === 1 && selectedService.max === 1
+    ? selectedService.price * modalQuantity
+    : (selectedService.price * modalQuantity) / 1000
+)}
                 </p>
               </div>
               <button

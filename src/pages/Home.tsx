@@ -357,7 +357,7 @@ const Home = () => {
                     {service.originalPrice && (
                       <span className="text-sm text-gray-500 line-through">{formatPrice(service.originalPrice)}</span>
                     )}
-                    <span className="text-gray-500"> / 1000</span>
+                    {!(service.min === 1 && service.max === 1) && <span className="text-gray-500"> / 1000</span>}
                   </div>
                   {service.originalPrice && (
                     <div className="mt-1 inline-flex items-center gap-1 px-2 py-0.5 bg-red-500/20 text-red-400 text-xs font-semibold rounded-md">
