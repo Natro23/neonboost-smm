@@ -46,8 +46,9 @@ const Cart = () => {
 
   // Handle nitro confirmation
   const handleNitroConfirm = () => {
-    if (pendingNitroService) {
-      updateNitroConfirmed(pendingNitroService, true);
+    const nitroItem = cart.find(item => item.service.id === 'discord-nitro-3m');
+    if (nitroItem) {
+      updateNitroConfirmed(nitroItem.service.id, true);
     }
     setShowNitroModal(false);
     setPendingNitroService(null);
