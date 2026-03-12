@@ -148,7 +148,11 @@ export const useStore = create<StoreState>()(
       getCartTotal: () => {
         const { cart } = get();
         return cart.reduce(
-          (total, item) => total + (item.service.price * item.quantity / 1000),
+          (total, item) => total + (
+            item.service.min === 1 && item.service.max === 1
+              ? item.service.price * item.quantity
+              : item.service.price * item.quantity / 1000
+          ),
           0
         );
       },
