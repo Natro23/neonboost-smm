@@ -325,12 +325,12 @@ app.post('/api/contact', async (req, res) => {
       const botToken = process.env.TELEGRAM_BOT_TOKEN;
       const chatId = process.env.TELEGRAM_CHAT_ID;
 
-      const contactMessage = `📬 *New Contact Form Submission!*\n\n` +
-        `👤 *Name:* ${name}\n` +
-        `📧 *Email:* ${email}\n` +
-        `📝 *Subject:* ${subject || 'No subject'}\n\n` +
+      const contactMessage = `📬 <b>New Contact Form Submission!</b>\n\n` +
+        `👤 <b>Name:</b> ${name}\n` +
+        `📧 <b>Email:</b> ${email}\n` +
+        `📝 <b>Subject:</b> ${subject || 'No subject'}\n\n` +
         `💬 <b>Message:</b>\n${message}\n\n` +
-        `_NeonBoost Panel_`;
+        `<i>NeonBoost Panel</i>`;
 
       try {
         const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
