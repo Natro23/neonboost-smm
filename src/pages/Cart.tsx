@@ -489,6 +489,12 @@ const Cart = () => {
                               setSelectedBank(e.target.value);
                               setPaymentProof(null);
                               setProofPreview(null);
+                              const bank = bankAccounts.find(b => b.name === e.target.value);
+                              if (bank?.account && !bank?.isCrypto) {
+                                navigator.clipboard.writeText(bank.account).then(() => {
+                                  toast.success(`📋 ${bank.account} copied!`);
+                                });
+                              }
                             }}
                             className="hidden"
                           />
