@@ -1,24 +1,5 @@
 [
   {
-    "id": "ig-followers-1",
-    "name": "Instagram Followers - Premium Real",
-    "category": "Followers",
-    "platform": "Instagram",
-    "price": 1.99,
-    "min": 100,
-    "max": 100000,
-    "description": "Get high-quality Instagram followers from real accounts. Our premium service ensures authentic engagement and growth.",
-    "features": [
-      "100% Real Accounts",
-      "High Retention",
-      "Gradual Delivery"
-    ],
-    "badge": "bestseller",
-    "speed": "Day 5K-10K",
-    "startTime": "0-1 Hour",
-    "refill": true
-  },
-  {
     "id": "ig-followers-2",
     "name": "Instagram Followers - Ultra Fast",
     "category": "Followers",
@@ -54,24 +35,6 @@
     "badge": "instant",
     "speed": "Day 20K",
     "startTime": "0-10 Minutes",
-    "refill": true
-  },
-  {
-    "id": "ig-likes-2",
-    "name": "Instagram Likes - Premium",
-    "category": "Likes",
-    "platform": "Instagram",
-    "price": 1.25,
-    "min": 100,
-    "max": 50000,
-    "description": "Premium quality likes with better engagement rates.",
-    "features": [
-      "Premium Accounts",
-      "Story Likes Included",
-      "High Retention"
-    ],
-    "speed": "Day 10K",
-    "startTime": "0-30 Minutes",
     "refill": true
   },
   {
@@ -149,25 +112,6 @@
     "refill": false
   },
   {
-    "id": "tt-followers-1",
-    "name": "TikTok Followers - Real",
-    "category": "Followers",
-    "platform": "TikTok",
-    "price": 1.49,
-    "min": 100,
-    "max": 100000,
-    "description": "Genuine TikTok followers to grow your account organically.",
-    "features": [
-      "Real Users",
-      "Organic Growth",
-      "No Ban Risk"
-    ],
-    "badge": "bestseller",
-    "speed": "Day 5K-15K",
-    "startTime": "0-1 Hour",
-    "refill": true
-  },
-  {
     "id": "tt-followers-2",
     "name": "TikTok Followers - Instant",
     "category": "Followers",
@@ -185,25 +129,6 @@
     "speed": "Day 30K+",
     "startTime": "0-5 Minutes",
     "refill": false
-  },
-  {
-    "id": "tt-likes-1",
-    "name": "TikTok Likes - Real Quality",
-    "category": "Likes",
-    "platform": "TikTok",
-    "price": 0.79,
-    "min": 100,
-    "max": 100000,
-    "description": "Real TikTok likes to boost your video engagement.",
-    "features": [
-      "Real Users",
-      "Worldwide",
-      "High Retention"
-    ],
-    "badge": "instant",
-    "speed": "Day 20K",
-    "startTime": "0-10 Minutes",
-    "refill": true
   },
   {
     "id": "tt-likes-2",
@@ -543,7 +468,7 @@
     "name": "Discord Nitro 3 Months Trial Subscription",
     "category": "Discord",
     "platform": "Discord",
-    "price": 5.00,
+    "price": 5.0,
     "min": 1,
     "max": 1,
     "description": "Discord Nitro 3 Months Trial Subscription - Requires specific account conditions. Read requirements before purchasing.",
