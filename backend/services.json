@@ -7,7 +7,7 @@
     "price": 2.49,
     "min": 500,
     "max": 50000,
-    "description": "Super fast Instagram followers delivery. Perfect for urgent growth needs.",
+    "description": "🟢 Instagram-ის გამომწერების სერვისი  ⌚️ დაწყების დრო: 0-5 წუთი  ⚠️ ყურადღება: პროფილი უნდა იყოს საჯარო (Public), წინააღმდეგ შემთხვევაში შეკვეთა არ დაიწყება. დასრულების შემდეგ შეგიძლიათ ისევ დახუროთ.  ✨ ბმულის მაგალითი: https://www.instagram.com/neon__boost/",
     "features": [
       "Instant Delivery",
       "Real & Active",
@@ -26,7 +26,7 @@
     "price": 0.85,
     "min": 50,
     "max": 100000,
-    "description": "Genuine Instagram likes from real users to boost your posts engagement.",
+    "description": "🟢 Instagram-ის მოწონებების სერვისი  ⌚️ დაწყების დრო: 0-10 წუთი  ⚠️ ყურადღება: პოსტი/რილსი უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.instagram.com/p/example/",
     "features": [
       "Real Users",
       "High Engagement",
@@ -42,10 +42,10 @@
     "name": "Instagram Video Views",
     "category": "Views",
     "platform": "Instagram",
-    "price": 0.45,
-    "min": 100,
+    "price": 0.8,
+    "min": 1000,
     "max": 1000000,
-    "description": "Boost your Instagram video views instantly with our reliable service.",
+    "description": "🟢 Instagram-ის ვიდეოს ნახვების სერვისი  ⌚️ დაწყების დრო: 0-5 წუთი  ⚠️ ყურადღება: ვიდეო უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.instagram.com/p/example/",
     "features": [
       "Instant Start",
       "High Speed",
@@ -61,10 +61,10 @@
     "name": "Instagram Reels Views",
     "category": "Views",
     "platform": "Instagram",
-    "price": 0.65,
-    "min": 100,
+    "price": 0.8,
+    "min": 1000,
     "max": 500000,
-    "description": "Specialized views for Instagram Reels to maximize your reach.",
+    "description": "🟢 Instagram Reels-ის ნახვების სერვისი  ⌚️ დაწყების დრო: 0-15 წუთი  ⚠️ ყურადღება: რილსი უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.instagram.com/reel/example/",
     "features": [
       "Reels Specific",
       "Algorithm Boost",
@@ -98,10 +98,10 @@
     "name": "Instagram Comments - Custom",
     "category": "Comments",
     "platform": "Instagram",
-    "price": 4.99,
+    "price": 10,
     "min": 10,
     "max": 1000,
-    "description": "Custom comments from real users to boost engagement.",
+    "description": "🟢 Instagram-ის კომენტარების სერვისი  ⌚️ დაწყების დრო: 0-2 საათი  ⚠️ ყურადღება: პოსტი უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.instagram.com/p/example/",
     "features": [
       "Custom Comments",
       "Real Accounts",
@@ -116,10 +116,10 @@
     "name": "TikTok Followers - Instant",
     "category": "Followers",
     "platform": "TikTok",
-    "price": 1.99,
+    "price": 9,
     "min": 500,
     "max": 50000,
-    "description": "Fast TikTok followers delivery for quick growth.",
+    "description": "🟢 TikTok-ის გამომწერების სერვისი  ⌚️ დაწყების დრო: 0-5 წუთი  ⚠️ ყურადღება: პროფილი უნდა იყოს საჯარო (Public), წინააღმდეგ შემთხვევაში შეკვეთა არ დაიწყება. დასრულების შემდეგ შეგიძლიათ ისევ დახუროთ.  ✨ ბმულის მაგალითი: https://www.tiktok.com/@neon__boost",
     "features": [
       "Instant Start",
       "High Speed",
@@ -135,10 +135,10 @@
     "name": "TikTok Video Likes",
     "category": "Likes",
     "platform": "TikTok",
-    "price": 0.99,
+    "price": 2,
     "min": 50,
     "max": 50000,
-    "description": "Fast likes delivery for TikTok videos.",
+    "description": "🟢 TikTok-ის მოწონებების სერვისი  ⌚️ დაწყების დრო: 0-5 წუთი  ⚠️ ყურადღება: ვიდეო უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.tiktok.com/@neon__boost/video/example",
     "features": [
       "Instant Delivery",
       "Real Likes",
@@ -156,7 +156,7 @@
     "price": 0.35,
     "min": 1000,
     "max": 10000000,
-    "description": "Massive TikTok views to make your videos go viral.",
+    "description": "🟢 TikTok-ის ნახვების სერვისი  ⌚️ დაწყების დრო: 0-5 წუთი  ⚠️ ყურადღება: ვიდეო უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.tiktok.com/@neon__boost/video/example",
     "features": [
       "Ultra Fast",
       "Algorithm Boost",
@@ -209,10 +209,10 @@
     "name": "TikTok Comments",
     "category": "Comments",
     "platform": "TikTok",
-    "price": 3.99,
+    "price": 10,
     "min": 10,
     "max": 5000,
-    "description": "Custom comments to boost engagement on your TikTok videos.",
+    "description": "🟢 TikTok-ის კომენტარების სერვისი  ⌚️ დაწყების დრო: 0-4 საათი  ⚠️ ყურადღება: ვიდეო უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.tiktok.com/@neon__boost/video/example",
     "features": [
       "Custom Comments",
       "Real Users",
@@ -230,7 +230,7 @@
     "price": 8.99,
     "min": 100,
     "max": 100000,
-    "description": "Real YouTube subscribers to grow your channel fast.",
+    "description": "🟢 YouTube-ის გამომწერების სერვისი  ⌚️ დაწყების დრო: 0-12 საათი  ⚠️ ყურადღება: არხი უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.youtube.com/@example",
     "features": [
       "Real Users",
       "High Retention",
@@ -249,7 +249,7 @@
     "price": 12.99,
     "min": 500,
     "max": 50000,
-    "description": "Fast YouTube subscribers delivery for quick channel growth.",
+    "description": "🟢 YouTube-ის გამომწერების სერვისი  ⌚️ დაწყების დრო: 0-6 საათი  ⚠️ ყურადღება: არხი უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.youtube.com/@example",
     "features": [
       "Fast Delivery",
       "Real Accounts",
@@ -267,7 +267,7 @@
     "price": 2.99,
     "min": 1000,
     "max": 1000000,
-    "description": "High retention YouTube views that improve your video ranking.",
+    "description": "🟢 YouTube-ის ვიდეოს ნახვების სერვისი  ⌚️ დაწყების დრო: 0-2 საათი  ⚠️ ყურადღება: ვიდეო უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.youtube.com/watch?v=example",
     "features": [
       "4-8 Min Retention",
       "SEO Friendly",
@@ -286,7 +286,7 @@
     "price": 3.99,
     "min": 1000,
     "max": 500000,
-    "description": "Monetizable views eligible for YouTube ad revenue.",
+    "description": "🟢 YouTube-ის ვიდეოს ნახვების სერვისი  ⌚️ დაწყების დრო: 0-4 საათი  ⚠️ ყურადღება: ვიდეო უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.youtube.com/watch?v=example",
     "features": [
       "AdSense Safe",
       "High Retention",
@@ -304,7 +304,7 @@
     "price": 1.99,
     "min": 100,
     "max": 100000,
-    "description": "Genuine YouTube likes to boost your video visibility.",
+    "description": "🟢 YouTube-ის მოწონებების სერვისი  ⌚️ დაწყების დრო: 0-30 წუთი  ⚠️ ყურადღება: ვიდეო უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.youtube.com/watch?v=example",
     "features": [
       "Real Users",
       "Fast Delivery",
@@ -323,7 +323,7 @@
     "price": 9.99,
     "min": 10,
     "max": 1000,
-    "description": "Custom YouTube comments from real users.",
+    "description": "🟢 YouTube-ის კომენტარების სერვისი  ⌚️ დაწყების დრო: 0-2 საათი  ⚠️ ყურადღება: ვიდეო უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.youtube.com/watch?v=example",
     "features": [
       "Custom Comments",
       "Real Accounts",
@@ -341,7 +341,7 @@
     "price": 4.99,
     "min": 100,
     "max": 4000,
-    "description": "Get 4000 watch hours quickly for YouTube monetization.",
+    "description": "🟢 YouTube-ის საათების სერვისი  ⌚️ დაწყების დრო: 0-24 საათი  ⚠️ ყურადღება: ვიდეო უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.youtube.com/watch?v=example",
     "features": [
       "Monetization Ready",
       "High Quality",
@@ -360,7 +360,7 @@
     "price": 1.79,
     "min": 100,
     "max": 100000,
-    "description": "Grow your Facebook page followers with real users.",
+    "description": "🟢 Facebook-ის გვერდის გამომწერების სერვისი  ⌚️ დაწყების დრო: 0-2 საათი  ⚠️ ყურადღება: გვერდი უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.facebook.com/example",
     "features": [
       "Real Users",
       "Page Followers",
@@ -379,7 +379,7 @@
     "price": 1.49,
     "min": 100,
     "max": 100000,
-    "description": "Get more Facebook page likes to increase credibility.",
+    "description": "🟢 Facebook-ის გვერდის მოწონებების სერვისი  ⌚️ დაწყების დრო: 0-1 საათი  ⚠️ ყურადღება: გვერდი უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.facebook.com/example",
     "features": [
       "Real Likes",
       "High Quality",
@@ -398,7 +398,7 @@
     "price": 0.79,
     "min": 50,
     "max": 50000,
-    "description": "Boost your Facebook posts with real likes.",
+    "description": "🟢 Facebook-ის პოსტის მოწონებების სერვისი  ⌚️ დაწყების დრო: 0-30 წუთი  ⚠️ ყურადღება: პოსტი უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.facebook.com/example/posts/example",
     "features": [
       "Post Specific",
       "Real Users",
@@ -413,10 +413,10 @@
     "name": "Facebook Video Views",
     "category": "Views",
     "platform": "Facebook",
-    "price": 0.65,
-    "min": 500,
+    "price": 0.5,
+    "min": 1000,
     "max": 1000000,
-    "description": "Increase your Facebook video views instantly.",
+    "description": "🟢 Facebook-ის ვიდეოს ნახვების სერვისი  ⌚️ დაწყების დრო: 0-10 წუთი  ⚠️ ყურადღება: ვიდეო უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.facebook.com/example/videos/example",
     "features": [
       "Instant Start",
       "High Speed",
@@ -428,32 +428,14 @@
     "refill": false
   },
   {
-    "id": "fb-story-1",
-    "name": "Facebook Story Views",
-    "category": "Story",
-    "platform": "Facebook",
-    "price": 0.45,
-    "min": 100,
-    "max": 50000,
-    "description": "Boost your Facebook story views.",
-    "features": [
-      "All Stories",
-      "Instant",
-      "Real Users"
-    ],
-    "speed": "Day 50K",
-    "startTime": "0-15 Minutes",
-    "refill": false
-  },
-  {
     "id": "fb-group-1",
     "name": "Facebook Group Members",
     "category": "Group",
     "platform": "Facebook",
-    "price": 2.49,
+    "price": 7,
     "min": 100,
     "max": 50000,
-    "description": "Grow your Facebook group with real members.",
+    "description": "🟢 Facebook-ის ჯგუფის წევრების სერვისი  ⌚️ დაწყების დრო: 0-4 საათი  ⚠️ ყურადღება: ჯგუფი უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.facebook.com/groups/example",
     "features": [
       "Real Members",
       "Active Users",
@@ -471,7 +453,7 @@
     "price": 5.0,
     "min": 1,
     "max": 1,
-    "description": "Discord Nitro 3 Months Trial Subscription - Requires specific account conditions. Read requirements before purchasing.",
+    "description": "🟢 Discord Nitro-ს სერვისი  ⌚️ დაწყების დრო: 10-25 წუთი  ⚠️ ყურადღება: საჭიროა სპეციფიური ანგარიშის პირობები. შეძენამდე წაიკითხეთ მოთხოვნები.",
     "features": [
       "3 Months Nitro",
       "Trial Code",
@@ -482,5 +464,100 @@
     "startTime": "0-5 Minutes",
     "refill": false,
     "requiresConfirmation": true
+  },
+  {
+    "id": "tt-views-1",
+    "name": "TikTok Views",
+    "category": "Views",
+    "platform": "TikTok",
+    "price": 0.5,
+    "min": 1000,
+    "max": 999999999,
+    "description": "🟢 TikTok-ის ნახვების სერვისი  ⌚️ დაწყების დრო: 0-5 წუთი  ⚠️ ყურადღება: ვიდეო უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.tiktok.com/@neon__boost/video/example",
+    "features": [
+      "Instant Start",
+      "High Speed",
+      "Unlimited"
+    ],
+    "badge": "instant",
+    "speed": "Day 1M+",
+    "startTime": "0-5 Minutes",
+    "refill": false
+  },
+  {
+    "id": "fb-love-1",
+    "name": "Facebook Post Love Reaction",
+    "category": "Reactions",
+    "platform": "Facebook",
+    "price": 3,
+    "min": 1000,
+    "max": 1000000,
+    "description": "🟢 Facebook-ის პოსტის Love რეაქციის სერვისი  ⌚️ დაწყების დრო: 0-10 წუთი  ⚠️ ყურადღება: პოსტი უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.facebook.com/example/posts/example",
+    "features": [
+      "Real Accounts",
+      "Fast Delivery",
+      "Worldwide"
+    ],
+    "badge": "instant",
+    "speed": "Day 50K",
+    "startTime": "0-10 Minutes",
+    "refill": false
+  },
+  {
+    "id": "fb-haha-1",
+    "name": "Facebook Post Haha Reaction",
+    "category": "Reactions",
+    "platform": "Facebook",
+    "price": 3,
+    "min": 1000,
+    "max": 1000000,
+    "description": "🟢 Facebook-ის პოსტის Haha რეაქციის სერვისი  ⌚️ დაწყების დრო: 0-10 წუთი  ⚠️ ყურადღება: პოსტი უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.facebook.com/example/posts/example",
+    "features": [
+      "Real Accounts",
+      "Fast Delivery",
+      "Worldwide"
+    ],
+    "badge": "instant",
+    "speed": "Day 50K",
+    "startTime": "0-10 Minutes",
+    "refill": false
+  },
+  {
+    "id": "yt-shorts-views-1",
+    "name": "YouTube Shorts Views",
+    "category": "Views",
+    "platform": "YouTube",
+    "price": 4,
+    "min": 1000,
+    "max": 10000000,
+    "description": "🟢 YouTube Shorts-ის ნახვების სერვისი  ⌚️ დაწყების დრო: 0-10 წუთი  ⚠️ ყურადღება: Shorts ვიდეო უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.youtube.com/shorts/example",
+    "features": [
+      "Instant Start",
+      "High Speed",
+      "Algorithm Boost"
+    ],
+    "badge": "instant",
+    "speed": "Day 500K",
+    "startTime": "0-10 Minutes",
+    "refill": false
+  },
+  {
+    "id": "yt-shorts-likes-1",
+    "name": "YouTube Shorts Likes",
+    "category": "Likes",
+    "platform": "YouTube",
+    "price": 5,
+    "min": 1000,
+    "max": 1000000,
+    "description": "🟢 YouTube Shorts-ის მოწონებების სერვისი  ⌚️ დაწყების დრო: 0-15 წუთი  ⚠️ ყურადღება: Shorts ვიდეო უნდა იყოს საჯარო (Public).  ✨ ბმულის მაგალითი: https://www.youtube.com/shorts/example",
+    "features": [
+      "Real Accounts",
+      "Fast Delivery",
+      "No Drop"
+    ],
+    "badge": "no-drop",
+    "speed": "Day 100K",
+    "startTime": "0-15 Minutes",
+    "refill": false
   }
 ]
