@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiInstagram, FiGift, FiCheck, FiAlertCircle, FiArrowRight, FiShield, FiZap, FiLink, FiUsers, FiXCircle } from 'react-icons/fi';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE = import.meta.env.VITE_API_URL || 'https://neonboost-backend.onrender.com';
 const LIMIT = 500;
 
 type Status = 'idle' | 'loading' | 'success' | 'claimed' | 'ended' | 'error';
