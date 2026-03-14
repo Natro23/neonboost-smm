@@ -406,6 +406,65 @@ app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'NeonBoost API is running', timestamp: new Date().toISOString() });
 });
 
+// Test Telegram — main chat
+app.get('/api/test-telegram', async (req, res) => {
+  if (!process.env.TELEGRAM_BOT_TOKEN || !process.env.TELEGRAM_CHAT_ID) {
+    return res.status(500).json({ success: false, message: 'Telegram not configured' });
+  }
+  try {
+    const msg = '✅ <b>NeonBoost Test</b>\n\nMain chat notification is working!\n🕐 ' + new Date().toLocaleString('ka-GE');
+    const response = await fetch('https://api.telegram.org/bot' + process.env.TELEGRAM_BOT_TOKEN + '/sendMessage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: process.env.TELEGRAM_CHAT_ID, text: msg, parse_mode: 'HTML' }),
+    });
+    const data = await response.json();
+    if (data.ok) {
+      res.json({ success: true, message: 'Test message sent to main chat!' });
+    } else {
+      res.status(500).json({ success: false, message: data.description });
+    }
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// Test Telegram — free trial chat
+app.get('/api/test-telegram-freetrial', async (req, res) => {
+  if (!process.env.TELEGRAM_BOT_TOKEN) {
+    return res.status(500).json({ success: false, message: 'Telegram not configured' });
+  }
+  const chatId = process.env.TELEGRAM_FREE_TRIAL_CHAT_ID || process.env.TELEGRAM_CHAT_ID;
+  if (!chatId) {
+    return res.status(500).json({ success: false, message: 'No chat ID configured' });
+  }
+  try {
+    const msg =
+      '🎁 <b>NeonBoost Free Trial Test</b>\n\n' +
+      '━━━━━━━━━━━━━━━━━━\n' +
+      '👤 <b>პროფილის სახელი:</b> @test_user\n' +
+      '🔗 <b>პროფილის ბმული:</b> https://instagram.com/test_user\n' +
+      '━━━━━━━━━━━━━━━━━━\n' +
+      '📊 დარჩენილია: <b>499 / 500</b>\n' +
+      '🕐 დრო: ' + new Date().toLocaleString('ka-GE') + '\n\n' +
+      '⚡️ <b>გაუგზავნე 50 ფოლოვერი ზემოთ მოცემულ ბმულზე!</b>\n\n' +
+      '<i>(ეს არის სატესტო შეტყობინება)</i>';
+    const response = await fetch('https://api.telegram.org/bot' + process.env.TELEGRAM_BOT_TOKEN + '/sendMessage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text: msg, parse_mode: 'HTML' }),
+    });
+    const data = await response.json();
+    if (data.ok) {
+      res.json({ success: true, message: 'Test message sent to free trial chat!', chatId });
+    } else {
+      res.status(500).json({ success: false, message: data.description, chatId });
+    }
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
 // Debug
 app.get('/api/debug', (req, res) => {
   res.json({

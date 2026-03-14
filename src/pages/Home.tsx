@@ -39,55 +39,72 @@ const AnimatedBackground = () => {
     let animationId: number;
     let particles: Array<{x: number; y: number; vx: number; vy: number; size: number; color: string}> = [];
 
+    // Detect mobile for reduced particle count
+    const isMobile = window.innerWidth < 768;
+
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
 
     const createParticles = () => {
-      particles = []
-      const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
+      particles = [];
+      // Much fewer particles on mobile — 30000 divisor instead of 15000
+      const divisor = isMobile ? 30000 : 18000;
+      const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / divisor), isMobile ? 30 : 60);
       const colors = ['#a855f7', '#06b6d4', '#ec4899', '#8b5cf6', '#06b6d4'];
-      
+
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
           size: Math.random() * 2 + 1,
           color: colors[Math.floor(Math.random() * colors.length)]
         });
       }
     };
 
-    const drawParticles = () => {
+    // Throttle to 30fps on mobile, 60fps on desktop
+    let lastTime = 0;
+    const targetFps = isMobile ? 30 : 60;
+    const interval = 1000 / targetFps;
+
+    const drawParticles = (timestamp: number) => {
+      animationId = requestAnimationFrame(drawParticles);
+
+      if (timestamp - lastTime < interval) return;
+      lastTime = timestamp;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      // Draw connections
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          
-          if (distance < 150) {
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(168, 85, 247, ${0.15 * (1 - distance / 150)})`;
-            ctx.lineWidth = 0.5;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
+
+      // Draw connections — skip on mobile entirely for performance
+      if (!isMobile) {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 120) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(168, 85, 247, ${0.12 * (1 - distance / 120)})`;
+              ctx.lineWidth = 0.5;
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
           }
         }
       }
 
-      // Update and draw particles
+      // Set globalAlpha once outside the loop
+      ctx.globalAlpha = 0.6;
       particles.forEach(p => {
         p.x += p.vx;
         p.y += p.vy;
 
-        // Wrap around
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
@@ -96,24 +113,24 @@ const AnimatedBackground = () => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
-        ctx.globalAlpha = 0.6;
         ctx.fill();
       });
-
-      animationId = requestAnimationFrame(drawParticles);
+      ctx.globalAlpha = 1;
     };
 
     resize();
     createParticles();
-    drawParticles();
+    animationId = requestAnimationFrame(drawParticles);
 
-    window.addEventListener('resize', () => {
+    const handleResize = () => {
       resize();
       createParticles();
-    });
+    };
+    window.addEventListener('resize', handleResize);
 
     return () => {
       cancelAnimationFrame(animationId);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -121,6 +138,7 @@ const AnimatedBackground = () => {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full pointer-events-none"
+      style={{ willChange: 'transform' }}
     />
   );
 };
@@ -201,9 +219,9 @@ const Home = () => {
         <div className="absolute inset-0 overflow-hidden">
           <AnimatedBackground />
           {/* Gradient Orbs */}
-          <div className="absolute top-0 left-0 w-[700px] h-[700px] bg-purple-600/20 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-cyan-500/15 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-pink-600/10 rounded-full blur-[180px] animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-600/15 rounded-full blur-[100px]" style={{ willChange: 'transform' }} />
+          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[80px]" style={{ willChange: 'transform' }} />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-600/8 rounded-full blur-[120px]" style={{ willChange: 'transform' }} />
           {/* Grid overlay */}
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
         </div>
