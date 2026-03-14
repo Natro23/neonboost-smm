@@ -13,6 +13,7 @@ import ApiDocs from './pages/ApiDocs';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
 import AdminPanel from './pages/AdminPanel';
+import FreeTrial from './pages/FreeTrial';
 import { useStore } from './store/useStore';
 
 function ScrollToTop() {
@@ -51,6 +52,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/free-trial" element={<FreeTrial />} />
           </Routes>
         </main>
         <Footer />

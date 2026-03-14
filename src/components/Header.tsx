@@ -40,6 +40,7 @@ const Header = () => {
     { name: t('nav.services'), path: '/services' },
     { name: t('nav.faq'), path: '/faq' },
     { name: t('nav.contact'), path: '/contact' },
+    { name: t('nav.freeTrial'), path: '/free-trial' },
   ];
 
   const languages = [

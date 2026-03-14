@@ -277,6 +277,28 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Free Trial Banner */}
+      <section className="py-10 px-4">
+        <div className="container mx-auto max-w-3xl">
+          <div className="relative rounded-2xl border border-purple-500/30 bg-gradient-to-r from-purple-900/40 to-pink-900/30 p-6 md:p-8 overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative flex flex-col md:flex-row items-center gap-6">
+              <div className="text-5xl">🎁</div>
+              <div className="flex-1 text-center md:text-left">
+                <div className="text-xs text-purple-300 font-medium uppercase tracking-widest mb-1">პირველი 500 მომხმარებლისთვის</div>
+                <h2 className="text-xl md:text-2xl font-bold text-white mb-2">მიიღე 50 Instagram ფოლოვერი სრულიად უფასოდ</h2>
+                <p className="text-gray-400 text-sm">შეზღუდული შეთავაზება — ერთხელ, ერთ ანგარიშზე. გადახდა საჭირო არ არის.</p>
+              </div>
+              <Link to="/free-trial" className="flex-shrink-0">
+                <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm font-bold hover:opacity-90 transition-opacity flex items-center gap-2 whitespace-nowrap">
+                  🆓 უფასოდ მიღება <FiArrowRight />
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features */}
       <section className="py-20">
         <div className="container mx-auto px-4">

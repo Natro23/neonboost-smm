@@ -174,8 +174,10 @@ async function sendTelegramMessage(order, retries = 10, delay = 5000) {
     return;
   }
 
+  const escape = (str) => String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
   const itemsList = order.items
-    .map(item => `• ${item.serviceName}\n  📊 Qty: ${item.quantity.toLocaleString()} (₾${item.total.toFixed(2)})\n  🔗 Link: ${item.link}`)
+    .map(item => `• ${escape(item.serviceName)}\n  📊 Qty: ${item.quantity.toLocaleString()} (₾${item.total.toFixed(2)})\n  🔗 Link: ${escape(item.link)}`)
     .join('\n\n');
 
   const message = `🎉 <b>New Order Received!</b>\n\n` +
@@ -287,12 +289,13 @@ app.post('/api/contact', async (req, res) => {
     if (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) {
       const botToken = process.env.TELEGRAM_BOT_TOKEN;
       const chatId = process.env.TELEGRAM_CHAT_ID;
+      const esc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
       const contactMessage = `📬 <b>New Contact Form Submission!</b>\n\n` +
-        `👤 <b>Name:</b> ${name}\n` +
-        `📧 <b>Email:</b> ${email}\n` +
-        `📝 <b>Subject:</b> ${subject || 'No subject'}\n\n` +
-        `💬 <b>Message:</b>\n${message}\n\n` +
+        `👤 <b>Name:</b> ${esc(name)}\n` +
+        `📧 <b>Email:</b> ${esc(email)}\n` +
+        `📝 <b>Subject:</b> ${esc(subject) || 'No subject'}\n\n` +
+        `💬 <b>Message:</b>\n${esc(message)}\n\n` +
         `<i>NeonBoost Panel</i>`;
 
       try {
@@ -316,6 +319,83 @@ app.post('/api/contact', async (req, res) => {
   } catch (error) {
     console.error('Contact form error:', error);
     res.status(500).json({ success: false, message: 'Failed to send message' });
+  }
+});
+
+
+const FREE_TRIAL_LIMIT = 500;
+
+// GET /api/free-trial/status
+app.get("/api/free-trial/status", async (req, res) => {
+  try {
+    const count = await db.collection("free_trials").countDocuments();
+    const remaining = Math.max(0, FREE_TRIAL_LIMIT - count);
+    res.json({ success: true, remaining, limit: FREE_TRIAL_LIMIT, ended: remaining === 0 });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server error." });
+  }
+});
+
+// POST /api/free-trial
+app.post("/api/free-trial", async (req, res) => {
+  try {
+    const { instagramUsername, instagramLink } = req.body;
+    if (!instagramUsername || instagramUsername.trim().length < 1) {
+      return res.status(400).json({ success: false, message: "Instagram username is required." });
+    }
+    if (!instagramLink || instagramLink.trim().length < 1) {
+      return res.status(400).json({ success: false, message: "Instagram profile link is required." });
+    }
+
+    const username = instagramUsername.trim().toLowerCase().replace(/^@/, "");
+    const link = instagramLink.trim().toLowerCase().replace(/\/$/, "");
+    const ip = (req.headers["x-forwarded-for"] || "").split(",")[0].trim() || req.socket.remoteAddress;
+    const collection = db.collection("free_trials");
+
+    // Check 500 limit FIRST
+    const totalClaims = await collection.countDocuments();
+    if (totalClaims >= FREE_TRIAL_LIMIT) {
+      return res.status(410).json({ success: false, message: "promotion_ended" });
+    }
+
+    // Check IP
+    const ipClaim = await collection.findOne({ ip });
+    if (ipClaim) return res.status(409).json({ success: false, message: "already_claimed_ip" });
+
+    // Check username
+    const usernameClaim = await collection.findOne({ username });
+    if (usernameClaim) return res.status(409).json({ success: false, message: "already_claimed_username" });
+
+    // Check profile link
+    const linkClaim = await collection.findOne({ link });
+    if (linkClaim) return res.status(409).json({ success: false, message: "already_claimed_link" });
+
+    // Save
+    await collection.insertOne({ ip, username, link, claimedAt: new Date() });
+    const remaining = Math.max(0, FREE_TRIAL_LIMIT - (totalClaims + 1));
+
+    if (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) {
+      const safeUsername = username.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const safeLink = link.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const msg =
+        "🎁 <b>უფასო ფოლოვერი — ახალი მოთხოვნა!</b>\n\n" +
+        "━━━━━━━━━━━━━━━━━━\n" +
+        "👤 <b>პროფილის სახელი:</b> @" + safeUsername + "\n" +
+        "🔗 <b>პროფილის ბმული:</b> " + safeLink + "\n" +
+        "━━━━━━━━━━━━━━━━━━\n" +
+        "📊 დარჩენილია: <b>" + remaining + " / " + FREE_TRIAL_LIMIT + "</b>\n" +
+        "🕐 დრო: " + new Date().toLocaleString('ka-GE') + "\n\n" +
+        "⚡️ <b>გაუგზავნე 50 ფოლოვერი ზემოთ მოცემულ ბმულზე!</b>";
+      await fetch("https://api.telegram.org/bot" + process.env.TELEGRAM_BOT_TOKEN + "/sendMessage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: process.env.TELEGRAM_CHAT_ID, text: msg, parse_mode: "HTML" })
+      }).catch(() => {});
+    }
+    res.status(201).json({ success: true, message: "claimed", remaining });
+  } catch (error) {
+    console.error("Free trial error:", error);
+    res.status(500).json({ success: false, message: "Server error. Please try again." });
   }
 });
 
@@ -456,6 +536,21 @@ connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`🚀 NeonBoost API server running on port ${PORT}`);
     console.log(`📋 Health check: http://localhost:${PORT}/api/health`);
+
+    // Keep-alive: ping own health endpoint every 10 minutes
+    // Prevents Render free tier from spinning down after inactivity
+    if (process.env.RENDER_EXTERNAL_URL) {
+      const keepAliveUrl = `${process.env.RENDER_EXTERNAL_URL}/api/health`;
+      setInterval(async () => {
+        try {
+          await fetch(keepAliveUrl);
+          console.log(`💓 Keep-alive ping sent to ${keepAliveUrl}`);
+        } catch (err) {
+          console.error('💔 Keep-alive ping failed:', err.message);
+        }
+      }, 10 * 60 * 1000); // every 10 minutes
+      console.log(`💓 Keep-alive enabled → ${keepAliveUrl}`);
+    }
   });
 });
 
