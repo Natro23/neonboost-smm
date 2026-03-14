@@ -51,7 +51,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-dark py-3' : 'bg-transparent py-5'
+        isScrolled || isMobileMenuOpen ? 'glass-dark py-3' : 'bg-transparent py-5'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -245,9 +245,10 @@ const Header = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.15, ease: 'easeOut' }}
               className="md:hidden mt-4 pb-4"
             >
               <nav className="flex flex-col gap-4">
