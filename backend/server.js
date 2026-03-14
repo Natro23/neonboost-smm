@@ -10,13 +10,7 @@ const path = require('path');
 const fs = require('fs');
 const fetch = require('node-fetch');
 const { MongoClient } = require('mongodb');
-const cloudinary = require('cloudinary').v2;
 require('dotenv').config();
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -44,7 +38,19 @@ app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Configure multer for file uploads
-const storage = multer.memoryStorage();
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const uploadDir = path.join(__dirname, 'uploads');
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+    cb(null, uploadDir);
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + path.extname(file.originalname));
+  },
+});
 
 const upload = multer({
   storage,
@@ -97,16 +103,7 @@ app.post('/api/orders', upload.single('paymentProof'), async (req, res) => {
     }
 
     const parsedItems = JSON.parse(items);
-    let paymentProofPath = null;
-if (req.file) {
-  const result = await new Promise((resolve, reject) => {
-    cloudinary.uploader.upload_stream(
-      { folder: 'neonboost/orders' },
-      (error, result) => error ? reject(error) : resolve(result)
-    ).end(req.file.buffer);
-  });
-  paymentProofPath = result.secure_url;
-}
+    const paymentProofPath = req.file ? `/uploads/${req.file.filename}` : null;
 
     const order = {
       orderId,
@@ -389,7 +386,6 @@ app.post("/api/free-trial", async (req, res) => {
         "📊 დარჩენილია: <b>" + remaining + " / " + FREE_TRIAL_LIMIT + "</b>\n" +
         "🕐 დრო: " + new Date().toLocaleString('ka-GE') + "\n\n" +
         "⚡️ <b>გაუგზავნე 50 ფოლოვერი ზემოთ მოცემულ ბმულზე!</b>";
-      // Use separate chat for free trials if set, otherwise fall back to main chat
       const freeChatId = process.env.TELEGRAM_FREE_TRIAL_CHAT_ID || process.env.TELEGRAM_CHAT_ID;
       await fetch("https://api.telegram.org/bot" + process.env.TELEGRAM_BOT_TOKEN + "/sendMessage", {
         method: "POST",
@@ -600,9 +596,6 @@ connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`🚀 NeonBoost API server running on port ${PORT}`);
     console.log(`📋 Health check: http://localhost:${PORT}/api/health`);
-
-    // Keep-alive: ping own health endpoint every 10 minutes
-    // Prevents Render free tier from spinning down after inactivity
   });
 });
 
