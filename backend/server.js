@@ -44,19 +44,7 @@ app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Configure multer for file uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const uploadDir = path.join(__dirname, 'uploads');
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-    cb(null, uploadDir);
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, uniqueSuffix + path.extname(file.originalname));
-  },
-});
+const storage = multer.memoryStorage();
 
 const upload = multer({
   storage,
@@ -109,7 +97,16 @@ app.post('/api/orders', upload.single('paymentProof'), async (req, res) => {
     }
 
     const parsedItems = JSON.parse(items);
-    const paymentProofPath = req.file ? `/uploads/${req.file.filename}` : null;
+    let paymentProofPath = null;
+if (req.file) {
+  const result = await new Promise((resolve, reject) => {
+    cloudinary.uploader.upload_stream(
+      { folder: 'neonboost/orders' },
+      (error, result) => error ? reject(error) : resolve(result)
+    ).end(req.file.buffer);
+  });
+  paymentProofPath = result.secure_url;
+}
 
     const order = {
       orderId,
