@@ -600,18 +600,6 @@ connectDB().then(() => {
 
     // Keep-alive: ping own health endpoint every 10 minutes
     // Prevents Render free tier from spinning down after inactivity
-    if (process.env.RENDER_EXTERNAL_URL) {
-      const keepAliveUrl = `${process.env.RENDER_EXTERNAL_URL}/api/health`;
-      setInterval(async () => {
-        try {
-          await fetch(keepAliveUrl);
-          console.log(`💓 Keep-alive ping sent to ${keepAliveUrl}`);
-        } catch (err) {
-          console.error('💔 Keep-alive ping failed:', err.message);
-        }
-      }, 10 * 60 * 1000); // every 10 minutes
-      console.log(`💓 Keep-alive enabled → ${keepAliveUrl}`);
-    }
   });
 });
 
