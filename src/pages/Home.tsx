@@ -196,7 +196,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12 md:pt-0 md:pb-0">
         {/* Animated Background */}
         <div className="absolute inset-0 overflow-hidden">
           <AnimatedBackground />
@@ -210,7 +210,10 @@ const Home = () => {
 
         <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/60 to-background" />
 
-        <div className="relative z-10 container mx-auto px-4 text-center">
+        <div className="relative z-10 container mx-auto px-6 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-sm mb-6 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
+            {t('hero.badge')}
+          </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-montserrat mb-6 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             <span className={isDarkMode ? 'text-white' : 'text-gray-900'}>{t('hero.title')}</span>
           </h1>
