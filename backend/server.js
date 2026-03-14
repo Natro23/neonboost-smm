@@ -386,10 +386,12 @@ app.post("/api/free-trial", async (req, res) => {
         "📊 დარჩენილია: <b>" + remaining + " / " + FREE_TRIAL_LIMIT + "</b>\n" +
         "🕐 დრო: " + new Date().toLocaleString('ka-GE') + "\n\n" +
         "⚡️ <b>გაუგზავნე 50 ფოლოვერი ზემოთ მოცემულ ბმულზე!</b>";
+      // Use separate chat for free trials if set, otherwise fall back to main chat
+      const freeChatId = process.env.TELEGRAM_FREE_TRIAL_CHAT_ID || process.env.TELEGRAM_CHAT_ID;
       await fetch("https://api.telegram.org/bot" + process.env.TELEGRAM_BOT_TOKEN + "/sendMessage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: process.env.TELEGRAM_CHAT_ID, text: msg, parse_mode: "HTML" })
+        body: JSON.stringify({ chat_id: freeChatId, text: msg, parse_mode: "HTML" })
       }).catch(() => {});
     }
     res.status(201).json({ success: true, message: "claimed", remaining });
