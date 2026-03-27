@@ -1,0 +1,456 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "freeTrial": "🎁 50 Free Followers",
+    "packages": "Packages"
+  },
+  "hero": {
+    "badge": "🇬🇪 Georgia's #1 Social Media Growth Panel",
+    "title": "Boost Your Social Media Presence",
+    "subtitle": "The world's fastest panel for growing your social media. Instant delivery, real quality, 24/7 support.",
+    "cta": "Get Started",
+    "viewPricing": "View Pricing"
+  },
+  "features": {
+    "title": "Why Choose NeonBoost?",
+    "realQuality": {
+      "title": "Real Quality",
+      "description": "100% authentic followers, likes, and views from real active users worldwide."
+    },
+    "instantDelivery": {
+      "title": "Instant Delivery",
+      "description": "Most orders start within minutes and complete within hours, not days."
+    },
+    "support": {
+      "title": "24/7 Support",
+      "description": "Round-the-clock customer support via live chat and Telegram for instant help."
+    },
+    "autoRefills": {
+      "title": "Auto Refills",
+      "description": "30-day auto-refill guarantee on all drop-protected services."
+    }
+  },
+  "stats": {
+    "orders": "Orders Completed",
+    "customers": "Happy Customers",
+    "countries": "Countries Served"
+  },
+  "platforms": {
+    "title": "Supported Platforms",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "youtube": "YouTube",
+    "facebook": "Facebook"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "browseServices": {
+      "title": "Browse Services",
+      "description": "Explore our 50+ services across all major social media platforms."
+    },
+    "addToCart": {
+      "title": "Add to Cart",
+      "description": "Select your desired quantity and add services to your cart."
+    },
+    "makePayment": {
+      "title": "Make Payment",
+      "description": "Upload your payment proof via bank transfer or crypto."
+    },
+    "watchGrowth": {
+      "title": "Watch Growth",
+      "description": "See your social media explode with real engagement!"
+    }
+  },
+  "topServices": {
+    "title": "Top Services",
+    "viewAll": "View All Services"
+  },
+  "comparison": {
+    "title": "Why We're Better",
+    "neonBoost": "NeonBoost",
+    "others": "Others",
+    "instantStart": "Instant Start",
+    "apiAccess": "API Access",
+    "refill": "30-Day Refill",
+    "support24": "24/7 Telegram Support",
+    "dripFeed": "Drip Feed",
+    "massOrder": "Mass Order"
+  },
+  "faqPage": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about our services",
+    "questions": {
+      "q1": {
+        "question": "How do I place an order?",
+        "answer": "Simply browse our services, select the one you need, enter your link and quantity, then proceed to checkout. After making the payment, upload your payment proof and we'll start processing your order immediately."
+      },
+      "q2": {
+        "question": "How long does delivery take?",
+        "answer": "Delivery time varies by service. Most services start within 1-24 hours. You can check the estimated delivery time on each service page. Instant services deliver immediately after order confirmation."
+      },
+      "q3": {
+        "question": "What is the refill policy?",
+        "answer": "We offer automatic refill for 30 days on most services. If your order drops below the purchased quantity within 30 days, we'll automatically refill it free of charge. Look for the 'Refill' badge on eligible services."
+      },
+      "q4": {
+        "question": "How do I get my order started?",
+        "answer": "After payment confirmation, our system starts processing your order automatically. You can track the progress through the order ID provided in your confirmation. Most orders begin within minutes to hours."
+      },
+      "q5": {
+        "question": "Is my information secure?",
+        "answer": "Yes! We take data security seriously. All your personal information and order details are encrypted and stored securely. We never share your data with third parties."
+      },
+      "q6": {
+        "question": "What payment methods do you accept?",
+        "answer": "We accept bank transfers (Bog & TBC Bank Georgia) and Cryptocurrency (USDT via CryptoMus). After checkout, you'll receive our payment details. Make sure to upload your payment proof for faster processing."
+      },
+      "q7": {
+        "question": "Can I cancel an order?",
+        "answer": "Orders can only be cancelled before they start processing. Once delivery has begun, cancellations are not possible. Contact support immediately if you need to cancel."
+      },
+      "q8": {
+        "question": "Why is my order not starting?",
+        "answer": "Several factors can affect delivery: high demand, service maintenance, or incorrect link. Check your link is public and correct. If issues persist, contact our support team."
+      },
+      "q9": {
+        "question": "Do you offer API access?",
+        "answer": "Yes! We provide API access for resellers. Visit our API Docs page for technical documentation and integration instructions."
+      },
+      "q10": {
+        "question": "How can I contact support?",
+        "answer": "You can reach us through the Contact page, use the live chat widget, or message us directly on Telegram. We're available 24/7 to assist you."
+      }
+    }
+  },
+  "footer": {
+    "description": "The world's fastest panel for growing your social media presence. Instant delivery, real quality, 24/7 support.",
+    "services": "Services",
+    "company": "Company",
+    "contact": "Contact",
+    "apiDocs": "API Documentation",
+    "contactEmail": "support@neonboost.com",
+    "contactPhone": "+995 555 123 456",
+    "contactLocation": "Tbilisi, Georgia",
+    "copyright": "All rights reserved.",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "youtube": "YouTube",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "legal": {
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "refund": "Refund Policy"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "filter": "Filter by platform",
+    "all": "All",
+    "search": "Search services...",
+    "min": "Min",
+    "max": "Max",
+    "per": "per 1000",
+    "addToCart": "Add to Cart",
+    "noServices": "No services found",
+    "viewDetails": "View Details",
+    "clearFilter": "Clear filter",
+    "refill": "Refill",
+    "noRefill": "No Refill",
+    "link": "Link",
+    "quantity": "Quantity",
+    "enterLink": "Enter your link",
+    "accountNotPrivate": "My account is not private",
+    "confirmAccount": "Please confirm that your account is not private",
+    "addToCartButton": "Add to Cart",
+    "cancel": "Cancel",
+    "minQuantity": "Minimum quantity",
+    "maxQuantity": "Maximum quantity",
+    "features": "Features",
+    "description": "Description"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "service": "Service",
+    "link": "Link",
+    "quantity": "Quantity",
+    "price": "Price",
+    "total": "Total",
+    "empty": "Your cart is empty",
+    "continueShopping": "Continue Shopping",
+    "checkout": "Checkout",
+    "promoCode": "Promo Code",
+    "apply": "Apply",
+    "accountNotPrivate": "My account is not private",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "grandTotal": "Grand Total",
+    "yourCart": "Your Cart",
+    "items": "items",
+    "summary": "Summary",
+    "orderTotal": "Order Total",
+    "proceedToCheckout": "Proceed to Checkout",
+    "enterPromoCode": "Enter promo code",
+    "promoApplied": "Promo code applied",
+    "confirmNitro": "Please confirm the Discord Nitro requirements!",
+    "invalidPromo": "Invalid promo code",
+    "confirmRemove": "Are you sure you want to remove this?",
+    "updateQuantity": "Update Quantity",
+    "clearCart": "Clear Cart",
+    "browseServices": "Browse Services",
+    "orderSummary": "Order Summary",
+    "selectPaymentMethod": "Select Payment Method",
+    "bankTransferInstructions": "Bank Transfer Instructions",
+    "sendPaymentTo": "Send the payment to",
+    "uploadScreenshotWarning": "After payment, upload your payment screenshot! If you can't upload, message us on Telegram with the screenshot!",
+    "uploadPaymentScreenshot": "Upload Payment Screenshot",
+    "clickToUpload": "Click to upload",
+    "fileUploaded": "File uploaded",
+    "processing": "Processing...",
+    "placeOrder": "Place Order",
+    "instantCryptoPayment": "Instant crypto payment",
+    "cryptoInfo": "Crypto payment selected. We'll process your order within 5-15 minutes after payment is confirmed.",
+    "bankInfo": "After payment, upload your screenshot. We'll process your order within 5-15 minutes. If you can't upload, message us on Telegram with the screenshot!"
+  },
+  "apiDocs": {
+    "title": "API Documentation",
+    "intro": "Connect your own applications to our panel using our powerful API.",
+    "endpoint": "API Endpoint",
+    "authentication": "Authentication",
+    "authDesc": "Include your API key in all requests using the 'API-KEY' header.",
+    "services": {
+      "title": "Get Services",
+      "desc": "Retrieve all available services"
+    },
+    "balance": {
+      "title": "Get Balance",
+      "desc": "Check your account balance"
+    },
+    "addOrder": {
+      "title": "Add Order",
+      "desc": "Create a new order"
+    },
+    "orderStatus": {
+      "title": "Order Status",
+      "desc": "Check the status of an order"
+    },
+    "massOrder": {
+      "title": "Mass Order",
+      "desc": "Create multiple orders at once"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have questions? We'd love to hear from you!",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send Message",
+    "success": "Message sent successfully!",
+    "error": "Failed to send message. Please try again.",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "Your email",
+    "subjectPlaceholder": "Subject",
+    "messagePlaceholder": "Your message...",
+    "required": "Required"
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "orders": "Orders",
+    "services": "Services",
+    "addFunds": "Add Funds",
+    "settings": "Settings"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "required": "Required"
+  },
+  "currency": {
+    "usd": "US Dollar",
+    "eur": "Euro",
+    "gel": "Georgian Lari"
+  },
+  "home": {
+    "startsIn30": "Starts in 30 seconds",
+    "sslSecured": "SSL Secured",
+    "day30Refill": "30-Day Refill",
+    "feature": "Feature",
+    "otherPanels": "Other Panels",
+    "orderNow": "Order Now",
+    "whatCustomersSay": "What Our Customers Say",
+    "customersSay": "Customers Say",
+    "readyToGoViral": "Start Growing Your Social Media Today",
+    "joinThousands": "Join thousands of satisfied customers and take your social media to the next level",
+    "visa": "Visa",
+    "mastercard": "Mastercard",
+    "usdt": "USDT"
+  },
+  "servicesPage": {
+    "ourServices": "Our Services",
+    "selectPlatform": "Select a platform to view our premium services",
+    "choosePlatform": "Choose your platform",
+    "enterLink": "Enter your link!",
+    "quantityMustBe": "Quantity must be between {min} and {max}!",
+    "confirmNotPrivate": "Confirm that your account is not private!",
+    "addedToCart": "Added to cart!",
+    "linkType": "Link Type",
+    "location": "Location",
+    "quality": "Quality",
+    "startTime": "Start Time",
+    "speed": "Speed",
+    "yourLink": "Your {{platform}} link",
+    "total": "Total",
+    "selectService": "Select Service",
+    "refill": "Refill",
+    "noRefill": "No Refill",
+    "worldwide": "Worldwide",
+    "real100": "100% Real",
+    "days30": "30 Days",
+    "no": "No",
+    "clearFilters": "Clear Filters"
+  },
+  "cartPage": {
+    "cartEmpty": "Your cart is empty!",
+    "minimumOrder": "Minimum order price is 3 GEL",
+    "provideLinks": "Please provide links for all services!",
+    "confirmNotPrivate": "Please confirm that your Facebook/TikTok/Instagram/YouTube accounts are not private!",
+    "selectPayment": "Please select a payment method!",
+    "uploadScreenshot": "Please upload your payment screenshot!",
+    "fileSizeError": "File size must be less than 5MB",
+    "imageError": "Please upload an image file (JPG/PNG)",
+    "invalidPromo": "Invalid promo code",
+    "enterLink": "Enter your {{platform}} link...",
+    "orderSuccess": "Order placed successfully! We'll process it soon.",
+    "orderFailed": "Failed to place order. Please try again.",
+    "promoApplied": "Promo code applied! {{discount}}% off",
+    "minimumOrderHint": "Please add more items to reach the minimum.",
+    "promoExpired": "This promo code has expired",
+    "promoNetworkError": "Could not validate code. Please try again."
+  },
+  "contactPage": {
+    "fillRequired": "Please fill in all required fields!",
+    "messageSent": "Message sent successfully! We'll contact you soon.",
+    "messageError": "Failed to send message. Please try again.",
+    "sendMessage": "Send Message",
+    "name": "Name *",
+    "email": "Email *",
+    "yourName": "Your name",
+    "yourEmail": "your@email.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "What is it about?",
+    "message": "Message *",
+    "messagePlaceholder": "Your message...",
+    "sending": "Sending...",
+    "sendBtn": "Send Message",
+    "getInTouch": "Get in Touch",
+    "emailTitle": "Email",
+    "phoneTitle": "Phone",
+    "locationTitle": "Location",
+    "emailValue": "support@neonboost.com",
+    "phoneValue": "+995 555 123 456",
+    "locationValue": "Tbilisi, Georgia",
+    "emailDesc": "Send us an email anytime",
+    "phoneDesc": "Mon-Fri, 9AM-6PM",
+    "locationDesc": "Visit our office",
+    "connectWithUs": "Connect with Us",
+    "instantMessaging": "Choose instant messaging? Contact us through social platforms for quick support.",
+    "needQuickHelp": "Need quick help?",
+    "checkFaq": "Check our FAQ section for answers to common questions."
+  },
+  "freeTrial": {
+    "badge": "Limited Offer",
+    "title": "50 Free Followers",
+    "subtitle": "For the first 500 users — completely free, no payment required.",
+    "spotsUsed": "Spots used",
+    "spotsLeft": "Spots left",
+    "spots": "spots",
+    "deliveryTime": "0–5 Minutes",
+    "followers": "50 Followers",
+    "free": "100% Free",
+    "usernamePlaceholder": "Instagram Username",
+    "profileLink": "Profile Link",
+    "linkPlaceholder": "https://www.instagram.com/your_username",
+    "linkExample": "e.g: https://www.instagram.com/neonboost.ge",
+    "submitBtn": "Get 50 Free Followers",
+    "loading": "Processing...",
+    "alreadyClaimed": "You have already used this free offer",
+    "error": "An error occurred. Please try again.",
+    "urgencyWarning": "Only {{remaining}} spots left! Hurry.",
+    "successTitle": "Request Received! 🎉",
+    "successBody": "Your 50 followers will be sent to",
+    "successNote": "Make sure your profile is public during delivery.",
+    "successLowSpots": "⚠️ Only {{remaining}} spots left!",
+    "viewServices": "Browse Other Services",
+    "backToServices": "← View All Services",
+    "rulePublic": "Profile must be public during delivery",
+    "ruleSpeed": "Delivery in 0–5 minutes",
+    "ruleOnce": "Once per IP, username, and link",
+    "endedBadge": "Promotion Ended",
+    "endedTitle": "Unfortunately, It's Over",
+    "endedBody": "The 500 free followers promotion has been fully claimed.",
+    "endedThanks": "Thank you to all participants! Other services are still available.",
+    "viewServicesBtn": "View Services",
+    "homeBtn": "Home Page"
+  },
+  "packages": {
+    "badge": "🔥 FLASH SALE — Limited Time Only!",
+    "title": "Instagram Growth Packages",
+    "subtitle": "Get more for less — followers and likes bundled together at unbeatable prices.",
+    "mostPopular": "Most Popular",
+    "followers": "Followers",
+    "likes": "Likes",
+    "starterBadge": "Starter",
+    "growthBadge": "Growth",
+    "proBadge": "Pro",
+    "pkg_starter_title": "Starter Pack",
+    "pkg_starter_desc": "🔥 WAS ₾15 — NOW just ₾9.99! Launch your Instagram with a massive credibility boost.",
+    "pkg_growth_title": "Growth Pack",
+    "pkg_growth_desc": "🚀 WAS ₾22 — NOW just ₾13.99! Our best-seller at an insane price. Don't sleep on this.",
+    "pkg_pro_title": "Pro Pack",
+    "pkg_pro_desc": "💥 WAS ₾30 — NOW just ₾16.99! Go viral for less. Maximum growth, minimum spend.",
+    "orderDetails": "Order Details",
+    "profileLinkLabel": "Instagram Profile Link (for Followers)",
+    "profileLinkPlaceholder": "https://instagram.com/yourprofile",
+    "profileLinkHint": "Followers will be sent to this account",
+    "postLinkLabel": "Instagram Post Link (for Likes)",
+    "postLinkPlaceholder": "https://instagram.com/p/yourpost",
+    "postLinkHint": "Likes will be added to this post",
+    "warningTitle": "⚠️ Important: Account must be PUBLIC",
+    "warningText": "Your Instagram account must be set to PUBLIC before placing the order. Orders cannot be fulfilled for private accounts.",
+    "confirmPublicCheck": "I confirm my Instagram account is PUBLIC and ready to receive followers & likes",
+    "selectPackageFirst": "Please select a package first",
+    "enterProfileLink": "Please enter your Instagram profile link",
+    "enterPostLink": "Please enter your Instagram post link",
+    "confirmPublic": "Please confirm your Instagram account is public",
+    "summaryPackage": "Package",
+    "summaryTotal": "Total",
+    "submitOrder": "Place Order Securely",
+    "submitting": "Placing Order...",
+    "trust1": "Instant Delivery",
+    "trust2": "30-Day Guarantee",
+    "trust3": "Secure Payment",
+    "flashSaleTitle": "⚡ FLASH SALE — Up to 47% OFF!",
+    "flashSaleSubtitle": "Biggest discount of the year. Prices drop back up soon!",
+    "flashSaleUrgency": "LIMITED TIME OFFER",
+    "saleBadge1": "33% OFF",
+    "saleBadge2": "36% OFF",
+    "saleBadge3": "43% OFF"
+  }
+}
