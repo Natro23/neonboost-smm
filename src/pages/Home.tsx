@@ -280,6 +280,107 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Packages Section — shown prominently right after hero */}
+      <section className={`py-20 px-4 ${isDarkMode ? 'bg-neon-darker' : 'bg-gray-50'}`}>
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-sm mb-4">
+              🔥 {t('packages.title') || 'Best Value Packages'}
+            </div>
+            <h2 className={`text-3xl md:text-4xl font-bold font-montserrat mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+              {t('packages.subtitle') || 'Choose Your Growth Package'}
+            </h2>
+            <p className={`text-lg max-w-xl mx-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              {t('packages.description') || 'All-in-one Instagram growth bundles — followers + likes at the best price'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Starter */}
+            <div className={`relative rounded-2xl p-6 border transition-all duration-300 hover:scale-105 ${isDarkMode ? 'bg-neon-dark border-white/10 hover:border-purple-500/50' : 'bg-white border-gray-200 hover:border-purple-400 shadow-md'}`}>
+              <div className={`text-xs font-bold uppercase tracking-wider mb-4 px-3 py-1 rounded-full inline-block bg-purple-500/20 text-purple-400`}>
+                {t('packages.starterBadge') || 'Starter'}
+              </div>
+              <div className="mb-4">
+                <div className="flex items-baseline gap-2">
+                  <span className={`text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                    {convertPrice(9.99)}
+                  </span>
+                  <span className="text-gray-500 line-through text-sm">{convertPrice(15)}</span>
+                </div>
+              </div>
+              <ul className={`space-y-2 mb-6 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                <li className="flex items-center gap-2"><FiCheck className="text-green-400 flex-shrink-0" /> 1,250 Followers</li>
+                <li className="flex items-center gap-2"><FiCheck className="text-green-400 flex-shrink-0" /> 850 Likes</li>
+                <li className="flex items-center gap-2"><FiCheck className="text-green-400 flex-shrink-0" /> {t('home.day30Refill') || '30-Day Refill'}</li>
+              </ul>
+              <Link to="/packages">
+                <button className={`w-full py-3 rounded-xl font-semibold border-2 transition-all duration-300 hover:scale-105 ${isDarkMode ? 'border-purple-500/50 text-purple-300 hover:bg-purple-500/10' : 'border-purple-400 text-purple-600 hover:bg-purple-50'}`}>
+                  {t('hero.viewPricing') || 'Get Started'} <FiArrowRight className="inline ml-1" />
+                </button>
+              </Link>
+            </div>
+
+            {/* Growth — Popular */}
+            <div className="relative rounded-2xl p-6 border-2 border-purple-500 bg-gradient-to-b from-purple-900/40 to-neon-dark transition-all duration-300 hover:scale-105 shadow-lg shadow-purple-500/20">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold">
+                ⭐ {t('packages.popular') || 'Most Popular'}
+              </div>
+              <div className="text-xs font-bold uppercase tracking-wider mb-4 px-3 py-1 rounded-full inline-block bg-pink-500/20 text-pink-400">
+                {t('packages.growthBadge') || 'Growth'}
+              </div>
+              <div className="mb-4">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-bold text-white">{convertPrice(13.99)}</span>
+                  <span className="text-gray-500 line-through text-sm">{convertPrice(22)}</span>
+                </div>
+              </div>
+              <ul className="space-y-2 mb-6 text-sm text-gray-300">
+                <li className="flex items-center gap-2"><FiCheck className="text-green-400 flex-shrink-0" /> 1,750 Followers</li>
+                <li className="flex items-center gap-2"><FiCheck className="text-green-400 flex-shrink-0" /> 1,350 Likes</li>
+                <li className="flex items-center gap-2"><FiCheck className="text-green-400 flex-shrink-0" /> {t('home.day30Refill') || '30-Day Refill'}</li>
+              </ul>
+              <Link to="/packages">
+                <button className="w-full py-3 rounded-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105">
+                  🚀 {t('hero.cta') || 'Order Now'} <FiArrowRight className="inline ml-1" />
+                </button>
+              </Link>
+            </div>
+
+            {/* Pro */}
+            <div className={`relative rounded-2xl p-6 border transition-all duration-300 hover:scale-105 ${isDarkMode ? 'bg-neon-dark border-white/10 hover:border-cyan-500/50' : 'bg-white border-gray-200 hover:border-cyan-400 shadow-md'}`}>
+              <div className="text-xs font-bold uppercase tracking-wider mb-4 px-3 py-1 rounded-full inline-block bg-cyan-500/20 text-cyan-400">
+                {t('packages.proBadge') || 'Pro'}
+              </div>
+              <div className="mb-4">
+                <div className="flex items-baseline gap-2">
+                  <span className={`text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{convertPrice(16.99)}</span>
+                  <span className="text-gray-500 line-through text-sm">{convertPrice(30)}</span>
+                </div>
+              </div>
+              <ul className={`space-y-2 mb-6 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                <li className="flex items-center gap-2"><FiCheck className="text-green-400 flex-shrink-0" /> 2,250 Followers</li>
+                <li className="flex items-center gap-2"><FiCheck className="text-green-400 flex-shrink-0" /> 1,850 Likes</li>
+                <li className="flex items-center gap-2"><FiCheck className="text-green-400 flex-shrink-0" /> {t('home.day30Refill') || '30-Day Refill'}</li>
+              </ul>
+              <Link to="/packages">
+                <button className={`w-full py-3 rounded-xl font-semibold border-2 transition-all duration-300 hover:scale-105 ${isDarkMode ? 'border-cyan-500/50 text-cyan-300 hover:bg-cyan-500/10' : 'border-cyan-400 text-cyan-600 hover:bg-cyan-50'}`}>
+                  {t('hero.viewPricing') || 'Get Started'} <FiArrowRight className="inline ml-1" />
+                </button>
+              </Link>
+            </div>
+          </div>
+
+          <div className="text-center mt-8">
+            <Link to="/packages">
+              <button className="text-purple-400 hover:text-purple-300 text-sm font-medium flex items-center gap-1 mx-auto transition-colors">
+                {t('packages.viewAll') || 'View full package details & order'} <FiArrowRight />
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Trust Badges */}
       <section className={`py-8 ${isDarkMode ? 'bg-neon-darker' : 'bg-gray-100'}`}>
         <div className="container mx-auto px-4">

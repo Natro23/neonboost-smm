@@ -36,7 +36,7 @@ export const services: Service[] = [
     features: ['Instant Delivery', 'Real & Active', 'No Drop'],
     badge: 'instant',
     speed: 'Day 50K+',
-    startTime: '0-5 Minutes',
+    startTime: '15-120 Minutes',
     refill: false,
   },
   {
@@ -52,7 +52,7 @@ export const services: Service[] = [
     features: ['Real Users', 'High Engagement', 'Worldwide'],
     badge: 'sale',
     speed: 'Day 20K',
-    startTime: '0-10 Minutes',
+    startTime: '15-120 Minutes',
     refill: true,
   },
   {
@@ -67,7 +67,7 @@ export const services: Service[] = [
     features: ['Instant Start', 'High Speed', 'Universal'],
     badge: 'instant',
     speed: 'Day 1M+',
-    startTime: '0-5 Minutes',
+    startTime: '15-120 Minutes',
     refill: false,
   },
   {
@@ -82,7 +82,7 @@ export const services: Service[] = [
     features: ['Reels Specific', 'Algorithm Boost', 'Real Views'],
     badge: 'no-drop',
     speed: 'Day 500K',
-    startTime: '0-15 Minutes',
+    startTime: '15-120 Minutes',
     refill: true,
   },
   {
@@ -98,7 +98,7 @@ export const services: Service[] = [
     features: ['Custom Comments', 'Real Accounts', 'Emoji Support'],
     badge: 'sale',
     speed: 'Day 500',
-    startTime: '0-2 Hours',
+    startTime: '15-120 Minutes',
     refill: false,
   },
 
@@ -116,7 +116,7 @@ export const services: Service[] = [
     features: ['Instant Start', 'High Speed', 'Real Accounts'],
     badge: 'instant',
     speed: 'Day 30K+',
-    startTime: '0-5 Minutes',
+    startTime: '15-120 Minutes',
     refill: false,
   },
   {
@@ -132,7 +132,7 @@ export const services: Service[] = [
     features: ['Instant Delivery', 'Real Likes', 'Viral Potential'],
     badge: 'sale',
     speed: 'Day 50K',
-    startTime: '0-5 Minutes',
+    startTime: '15-120 Minutes',
     refill: false,
   },
   {
@@ -148,7 +148,7 @@ export const services: Service[] = [
     features: ['Custom Comments', 'Real Users', 'Emoji Support'],
     badge: 'sale',
     speed: 'Day 1K',
-    startTime: '0-4 Hours',
+    startTime: '15-120 Minutes',
     refill: false,
   },
 
@@ -164,7 +164,7 @@ export const services: Service[] = [
     features: ['Instant Start', 'High Speed', 'Unlimited'],
     badge: 'instant',
     speed: 'Day 1M+',
-    startTime: '0-5 Minutes',
+    startTime: '15-120 Minutes',
     refill: false,
   },
 
@@ -182,7 +182,7 @@ export const services: Service[] = [
     features: ['Real Users', 'Page Followers', 'No Drop'],
     badge: 'bestseller',
     speed: 'Day 5K-10K',
-    startTime: '0-2 Hours',
+    startTime: '15-120 Minutes',
     refill: true,
   },
   {
@@ -198,7 +198,7 @@ export const services: Service[] = [
     features: ['Post Specific', 'Real Users', 'Fast Delivery'],
     badge: 'sale',
     speed: 'Day 5K',
-    startTime: '0-30 Minutes',
+    startTime: '15-120 Minutes',
     refill: false,
   },
   {
@@ -213,7 +213,7 @@ export const services: Service[] = [
     features: ['Instant Start', 'High Speed', 'Real Views'],
     badge: 'instant',
     speed: 'Day 100K+',
-    startTime: '0-10 Minutes',
+    startTime: '15-120 Minutes',
     refill: false,
   },
   {
@@ -229,7 +229,7 @@ export const services: Service[] = [
     features: ['Real Members', 'Active Users', 'Worldwide'],
     badge: 'sale',
     speed: 'Day 3K',
-    startTime: '0-4 Hours',
+    startTime: '15-120 Minutes',
     refill: true,
   },
 
@@ -246,7 +246,7 @@ export const services: Service[] = [
     features: ['Real Accounts', 'Fast Delivery', 'Worldwide'],
     badge: 'instant',
     speed: 'Day 50K',
-    startTime: '0-10 Minutes',
+    startTime: '15-120 Minutes',
     refill: false,
   },
   {
@@ -262,7 +262,7 @@ export const services: Service[] = [
     features: ['Real Accounts', 'Fast Delivery', 'Worldwide'],
     badge: 'instant',
     speed: 'Day 50K',
-    startTime: '0-10 Minutes',
+    startTime: '15-120 Minutes',
     refill: false,
   },
   // YouTube Services
@@ -279,7 +279,7 @@ export const services: Service[] = [
     features: ['AI Created', 'Custom Comments', 'Fast Delivery'],
     badge: 'sale',
     speed: 'Day 1K',
-    startTime: '0-2 Hours',
+    startTime: '15-120 Minutes',
     refill: false,
   },
   {
@@ -295,7 +295,7 @@ export const services: Service[] = [
     features: ['100% Real Accounts', 'High Engagement', 'Instant Start'],
     badge: 'sale',
     speed: 'Day 2K',
-    startTime: 'Instant',
+    startTime: '15-120 Minutes',
     refill: false,
   },
   {
@@ -311,7 +311,7 @@ export const services: Service[] = [
     features: ['Real Likes', 'Quick Delivery', 'Worldwide'],
     badge: 'sale',
     speed: 'Day 3K',
-    startTime: '0-30 Minutes',
+    startTime: '15-120 Minutes',
     refill: false,
   },
 
@@ -328,7 +328,7 @@ export const services: Service[] = [
     features: ['Instant Start', 'High Speed', 'Algorithm Boost'],
     badge: 'instant',
     speed: 'Day 500K',
-    startTime: '0-10 Minutes',
+    startTime: '15-120 Minutes',
     refill: false,
   },
   {
@@ -344,7 +344,7 @@ export const services: Service[] = [
     features: ['Real Accounts', 'Fast Delivery', 'No Drop'],
     badge: 'no-drop',
     speed: 'Day 100K',
-    startTime: '0-15 Minutes',
+    startTime: '15-120 Minutes',
     refill: false,
   },
 
@@ -362,7 +362,7 @@ export const services: Service[] = [
     features: ['3 Months Nitro', 'Trial Code', 'Instant Delivery'],
     badge: 'instant',
     speed: 'Instant',
-    startTime: '10-25 Minutes',
+    startTime: '15-120 Minutes',
     refill: false,
   },
 ];

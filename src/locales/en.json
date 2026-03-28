@@ -407,7 +407,12 @@
     "endedBody": "The 500 free followers promotion has been fully claimed.",
     "endedThanks": "Thank you to all participants! Other services are still available.",
     "viewServicesBtn": "View Services",
-    "homeBtn": "Home Page"
+    "homeBtn": "Home Page",
+    "publicModalTitle": "Is Your Profile Public?",
+    "publicModalBody": "Your Instagram account must be PUBLIC before we can send followers. Private accounts cannot receive followers. Please confirm your account is set to public.",
+    "publicModalWarning": "Settings > Privacy > Account Privacy > make sure Private Account is turned OFF",
+    "publicModalConfirm": "Yes, my profile is PUBLIC — Send my followers!",
+    "publicModalCancel": "No, I need to make it public first"
   },
   "packages": {
     "badge": "🔥 FLASH SALE — Limited Time Only!",
@@ -451,6 +456,9 @@
     "flashSaleUrgency": "LIMITED TIME OFFER",
     "saleBadge1": "33% OFF",
     "saleBadge2": "36% OFF",
-    "saleBadge3": "43% OFF"
+    "saleBadge3": "43% OFF",
+    "viewAll": "View full package details & order",
+    "popular": "Most Popular",
+    "description": "All-in-one Instagram growth bundles — followers + likes at the best price"
   }
 }

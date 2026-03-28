@@ -1,12 +1,51 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FiInstagram, FiGift, FiCheck, FiAlertCircle, FiArrowRight, FiShield, FiZap, FiLink, FiUsers, FiXCircle } from 'react-icons/fi';
+import { FiInstagram, FiGift, FiCheck, FiAlertCircle, FiArrowRight, FiShield, FiZap, FiLink, FiUsers, FiXCircle, FiLock, FiUnlock } from 'react-icons/fi';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'https://neonboost-backend.onrender.com';
 const LIMIT = 500;
 
 type Status = 'idle' | 'loading' | 'success' | 'claimed' | 'ended' | 'error';
+
+function PublicConfirmModal({ onConfirm, onCancel }: { onConfirm: () => void; onCancel: () => void }) {
+  const { t } = useTranslation();
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4" style={{ background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(6px)' }}>
+      <div className="bg-[#0f0f1a] border border-white/10 rounded-2xl p-7 max-w-sm w-full shadow-2xl animate-fade-in-up">
+        <div className="w-14 h-14 rounded-full bg-yellow-500/15 border border-yellow-500/30 flex items-center justify-center mx-auto mb-5">
+          <FiUnlock className="text-yellow-400 text-2xl" />
+        </div>
+        <h2 className="text-xl font-bold text-white text-center mb-2">
+          {t('freeTrial.publicModalTitle') || 'Is Your Profile Public?'}
+        </h2>
+        <p className="text-gray-400 text-sm text-center leading-relaxed mb-6">
+          {t('freeTrial.publicModalBody') || 'Your Instagram account must be PUBLIC before we send followers. Private accounts cannot receive followers. Please confirm your account is set to public.'}
+        </p>
+
+        <div className="flex gap-2 items-start p-3 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-xs mb-6">
+          <span className="mt-0.5 flex-shrink-0">⚠️</span>
+          <span>{t('freeTrial.publicModalWarning') || 'Settings → Privacy → Account Privacy → make sure "Private Account" is OFF'}</span>
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <button
+            onClick={onConfirm}
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+          >
+            <FiCheck /> {t('freeTrial.publicModalConfirm') || 'Yes, my profile is PUBLIC — Send followers!'}
+          </button>
+          <button
+            onClick={onCancel}
+            className="w-full py-3 rounded-xl border border-white/10 text-gray-400 text-sm hover:text-white hover:border-white/20 transition-colors flex items-center justify-center gap-2"
+          >
+            <FiLock /> {t('freeTrial.publicModalCancel') || 'No, I need to make it public first'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Alert({ children, icon }: { children: React.ReactNode; icon?: React.ReactNode }) {
   return (
@@ -23,6 +62,7 @@ export default function FreeTrial() {
   const [link, setLink] = useState('');
   const [status, setStatus] = useState<Status>('idle');
   const [remaining, setRemaining] = useState<number | null>(null);
+  const [showPublicModal, setShowPublicModal] = useState(false);
 
   useEffect(() => {
     fetch(`${API_BASE}/api/free-trial/status`)
@@ -40,8 +80,13 @@ export default function FreeTrial() {
   const claimed = LIMIT - (remaining ?? LIMIT);
   const progressPct = remaining !== null ? Math.round((claimed / LIMIT) * 100) : 0;
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (!isValid || status === 'ended') return;
+    setShowPublicModal(true);
+  };
+
+  const submitOrder = async () => {
+    setShowPublicModal(false);
     setStatus('loading');
     try {
       const res = await fetch(`${API_BASE}/api/free-trial`, {
@@ -100,6 +145,8 @@ export default function FreeTrial() {
   }
 
   return (
+    <>
+    {showPublicModal && <PublicConfirmModal onConfirm={submitOrder} onCancel={() => setShowPublicModal(false)} />}
     <div className="min-h-screen px-4 py-24">
       <div className="max-w-lg mx-auto">
 
@@ -244,5 +291,6 @@ export default function FreeTrial() {
         </div>
       </div>
     </div>
+    </>
   );
 }
